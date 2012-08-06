@@ -1,0 +1,19 @@
+%h1 Listing mangas
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @mangas.each do |manga|
+    %tr
+      %td= manga.name
+      %td= link_to 'Show', manga
+      %td= link_to 'Edit', edit_manga_path(manga)
+      %td= link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Manga', new_manga_path

@@ -1,4 +1,6 @@
 ScanGallery::Application.routes.draw do
+  resources :chapters
+
   resources :mangas
 
   # The priority is based upon order of creation:

@@ -3,47 +3,48 @@ require 'test_helper'
 class ChaptersControllerTest < ActionController::TestCase
   setup do
     @chapter = chapters(:one)
+    @manga = mangas(:one)
   end
 
   test "should get index" do
-    get :index
+    get :index, :manga_id => @manga.id
     assert_response :success
     assert_not_nil assigns(:chapters)
   end
 
   test "should get new" do
-    get :new
+    get :new, :manga_id => @manga.id
     assert_response :success
   end
 
   test "should create chapter" do
     assert_difference('Chapter.count') do
-      post :create, chapter: { number: @chapter.number }
+      post :create, chapter: { number: @chapter.number }, :manga_id => @manga.id
     end
 
-    assert_redirected_to chapter_path(assigns(:chapter))
+    assert_redirected_to manga_chapter_path(@manga, assigns(:chapter))
   end
 
   test "should show chapter" do
-    get :show, id: @chapter
+    get :show, id: @chapter, :manga_id =>@manga.id
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @chapter
+    get :edit, id: @chapter, :manga_id => @manga.id
     assert_response :success
   end
 
   test "should update chapter" do
-    put :update, id: @chapter, chapter: { number: @chapter.number }
-    assert_redirected_to chapter_path(assigns(:chapter))
+    put :update, id: @chapter, chapter: { number: @chapter.number }, :manga_id => @manga.id
+    assert_redirected_to manga_chapter_path(@manga, assigns(:chapter))
   end
 
   test "should destroy chapter" do
     assert_difference('Chapter.count', -1) do
-      delete :destroy, id: @chapter
+      delete :destroy, id: @chapter, :manga_id => @manga.id
     end
 
-    assert_redirected_to chapters_path
+    assert_redirected_to manga_chapters_path(@manga)
   end
 end

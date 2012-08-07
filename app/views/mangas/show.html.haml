@@ -7,7 +7,7 @@
 				= link_to 'Edit', edit_manga_path(@manga), :class => "btn"
 				= link_to 'Destroy', @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
 			.btn-group
-				= link_to 'Add chapter', '#', :class => "btn"
+				= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn"
 
 %p#notice= notice
 

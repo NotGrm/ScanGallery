@@ -1,9 +1,9 @@
-= simple_form_for(@chapter) do |f|
+= simple_form_for([@manga,@chapter]) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :number
-    = f.association :manga
+    // = f.association :manga
 
   .form-actions
     = f.button :submit

@@ -1,8 +1,10 @@
 class ChaptersController < ApplicationController
+  before_filter :get_manga
+
   # GET /chapters
   # GET /chapters.json
   def index
-    @chapters = Chapter.all
+    @chapters = @manga.chapters
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +26,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    @chapter = Chapter.new
+    @chapter = @manga.chapters.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +42,11 @@ class ChaptersController < ApplicationController
   # POST /chapters
   # POST /chapters.json
   def create
-    @chapter = Chapter.new(params[:chapter])
+    @chapter = @manga.chapters.build(params[:chapter])
 
     respond_to do |format|
       if @chapter.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
+        format.html { redirect_to [@manga, @chapter], notice: 'Chapter was successfully created.' }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.update_attributes(params[:chapter])
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
+        format.html { redirect_to [@manga, @chapter], notice: 'Chapter was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +78,13 @@ class ChaptersController < ApplicationController
     @chapter.destroy
 
     respond_to do |format|
-      format.html { redirect_to chapters_url }
+      format.html { redirect_to manga_chapters_url(@manga) }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def get_manga
+    @manga = Manga.find(params[:manga_id])
   end
 end

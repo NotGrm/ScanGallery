@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @chapter
+= link_to 'Show', manga_chapter_path([@manga, @chapter])
 \|
-= link_to 'Back', chapters_path
+= link_to 'Back', manga_chapters_path(@manga)

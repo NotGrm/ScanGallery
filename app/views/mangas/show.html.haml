@@ -1,18 +1,24 @@
-.page-header.row
-	.span6
-		%h1= @manga.name
-	.span6.offset3
-		.btn-toolbar
-			.btn-group
-				= link_to 'Edit', edit_manga_path(@manga), :class => "btn"
-				= link_to 'Destroy', @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
-			.btn-group
-				= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn"
+.page-header
+	%h1= @manga.name
+		
 
 %p#notice= notice
 
-%p
-	%b Name:
-	= @manga.name
+.row
+	.span9
+		.well
+			= link_to 'Back', mangas_path, :class => "btn"
+			= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary"
 
-= link_to 'Back', mangas_path, :class => "btn"
+		= render :partial => "chapters/list", :locals => { :chapters => @manga.chapters }
+
+	.span3.well
+		
+		.btn-group
+			%button.btn.btn-inverse Actions
+			%button.btn.dropdown-toggle.btn-inverse{ "data-toggle" => "dropdown"}
+				%span.caret
+
+			%ul.dropdown-menu
+				%li= link_to 'Edit Manga', edit_manga_path(@manga)
+				%li= link_to 'Destroy Manga', @manga, :confirm => 'Are you sure?', :method => :delete

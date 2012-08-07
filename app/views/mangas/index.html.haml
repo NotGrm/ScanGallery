@@ -1,19 +1,22 @@
-%h1 Listing mangas
+.page-header
+  %h1 Listing mangas
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
+.well
+  = link_to 'New Manga', new_manga_path, :class => "btn btn-primary"
 
-  - @mangas.each do |manga|
-    %tr
-      %td= manga.name
-      %td= link_to 'Show', manga
-      %td= link_to 'Edit', edit_manga_path(manga)
-      %td= link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete
+.span8
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th
+    %tbody
+      - @mangas.each do |manga|
+        %tr
+          %td= link_to manga.name, manga
+          %td
+            .btn-group
+              = link_to 'Edit', edit_manga_path(manga), :class => "btn"
+              = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
 
 %br
-
-= link_to 'New Manga', new_manga_path

@@ -1,9 +1,18 @@
+.page-header.row
+	.span6
+		%h1= @manga.name
+	.span6.offset3
+		.btn-toolbar
+			.btn-group
+				= link_to 'Edit', edit_manga_path(@manga), :class => "btn"
+				= link_to 'Destroy', @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
+			.btn-group
+				= link_to 'Add chapter', '#', :class => "btn"
+
 %p#notice= notice
 
 %p
-  %b Name:
-  = @manga.name
+	%b Name:
+	= @manga.name
 
-= link_to 'Edit', edit_manga_path(@manga)
-\|
-= link_to 'Back', mangas_path
+= link_to 'Back', mangas_path, :class => "btn"

@@ -23,6 +23,8 @@ end
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly'
 gem 'simple_form'
 
 # To use ActiveModel has_secure_password

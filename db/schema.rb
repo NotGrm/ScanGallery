@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807054844) do
+ActiveRecord::Schema.define(:version => 20120808113023) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "number"
@@ -27,5 +27,14 @@ ActiveRecord::Schema.define(:version => 20120807054844) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "pages", :force => true do |t|
+    t.integer  "number"
+    t.integer  "chapter_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pages", ["chapter_id"], :name => "index_pages_on_chapter_id"
 
 end

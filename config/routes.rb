@@ -1,5 +1,7 @@
 ScanGallery::Application.routes.draw do
   
+  resources :pages
+
   resources :mangas do
     resources :chapters
   end

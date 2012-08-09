@@ -1,9 +1,10 @@
-= simple_form_for(@page) do |f|
+= simple_form_for(@page, :html => {:multipart => true} )do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :number
-    = f.association :chapter
+    = f.input :image, :as => :file
+    = image_tag @page.image.thumb('100x100').url if @page.image_uid
 
   .form-actions
     = f.button :submit

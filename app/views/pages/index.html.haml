@@ -1,20 +1,23 @@
 %h1 Listing pages
 
-%table
-  %tr
-    %th Number
-    %th Chapter
-    %th
-    %th
-    %th
-
-  - @pages.each do |page|
+%table.table
+  %thead
     %tr
-      %td= page.number
-      %td= page.chapter
-      %td= link_to 'Show', page
-      %td= link_to 'Edit', edit_page_path(page)
-      %td= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
+      %th Thumb
+      %th Number
+      %th Chapter
+      %th
+      %th
+      %th
+  %tbody
+    - @pages.each do |page|
+      %tr
+        %td= image_tag page.image.thumb('100x100').url if page.image_uid
+        %td= page.number
+        %td= page.chapter
+        %td= link_to 'Show', page
+        %td= link_to 'Edit', edit_page_path(page)
+        %td= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
 
 %br
 

@@ -7,10 +7,15 @@
 	\|
 	= link_to 'Back', manga_chapter_path(@manga, @chapter)
 
-%p
-	%b Number:
-	= @page.number
-%p
+%div
+	- if @page.previous_page
+		= link_to 'Previous', manga_chapter_page_path(@manga, @chapter, @page.previous_page)
+	\|
+	- if @page.next_page
+		= link_to 'Next', manga_chapter_page_path(@manga, @chapter, @page.next_page)
+
+%div
 	= image_tag @page.image.url
+
 
 

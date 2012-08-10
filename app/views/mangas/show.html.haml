@@ -21,4 +21,5 @@
 
 			%ul.dropdown-menu
 				%li= link_to 'Edit Manga', edit_manga_path(@manga)
+				%li.divider
 				%li= link_to 'Destroy Manga', @manga, :confirm => 'Are you sure?', :method => :delete

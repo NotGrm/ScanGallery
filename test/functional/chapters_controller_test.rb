@@ -6,12 +6,6 @@ class ChaptersControllerTest < ActionController::TestCase
     @manga = mangas(:one)
   end
 
-  test "should get index" do
-    get :index, :manga_id => @manga.id
-    assert_response :success
-    assert_not_nil assigns(:chapters)
-  end
-
   test "should get new" do
     get :new, :manga_id => @manga.id
     assert_response :success
@@ -19,7 +13,7 @@ class ChaptersControllerTest < ActionController::TestCase
 
   test "should create chapter" do
     assert_difference('Chapter.count') do
-      post :create, chapter: { number: @chapter.number }, :manga_id => @manga.id
+      post :create, chapter: { number: @chapter.number}, :manga_id => @manga.id
     end
 
     assert_redirected_to manga_chapter_path(@manga, assigns(:chapter))
@@ -45,6 +39,6 @@ class ChaptersControllerTest < ActionController::TestCase
       delete :destroy, id: @chapter, :manga_id => @manga.id
     end
 
-    assert_redirected_to manga_chapters_path(@manga)
+    assert_redirected_to manga_path(@manga)
   end
 end

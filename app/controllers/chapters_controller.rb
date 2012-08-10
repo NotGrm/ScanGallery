@@ -1,17 +1,6 @@
 class ChaptersController < ApplicationController
   before_filter :get_manga
 
-  # GET /chapters
-  # GET /chapters.json
-  def index
-    @chapters = @manga.chapters
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @chapters }
-    end
-  end
-
   # GET /chapters/1
   # GET /chapters/1.json
   def show
@@ -78,7 +67,7 @@ class ChaptersController < ApplicationController
     @chapter.destroy
 
     respond_to do |format|
-      format.html { redirect_to manga_chapters_url(@manga) }
+      format.html { redirect_to manga_url(@manga) }
       format.json { head :no_content }
     end
   end

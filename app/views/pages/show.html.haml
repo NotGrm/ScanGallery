@@ -7,6 +7,6 @@
   %b Chapter:
   = @page.chapter
 
-= link_to 'Edit', edit_page_path(@page)
+= link_to 'Edit', edit_manga_chapter_page_path(@manga, @chapter, @page)
 \|
-= link_to 'Back', pages_path
+= link_to 'Back', manga_chapter_path(@manga, @chapter)

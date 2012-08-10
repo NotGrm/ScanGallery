@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  before_filter :get_manga
+  before_filter :get_chapter
+
   # GET /pages
   # GET /pages.json
   def index
@@ -24,7 +27,7 @@ class PagesController < ApplicationController
   # GET /pages/new
   # GET /pages/new.json
   def new
-    @page = Page.new
+    @page = @chapter.pages.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +43,11 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    @page = Page.new(params[:page])
+    @page = @chapter.pages.build(params[:page])
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to [@manga, @chapter, @page], notice: 'Page was successfully created.' }
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to [@manga, @chapter], notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +79,18 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to manga_chapter_url(@manga, @chapter) }
       format.json { head :no_content }
     end
   end
+
+  private
+  def get_manga
+    @manga = Manga.find(params[:manga_id])
+  end
+
+  def get_chapter
+    @chapter = Chapter.find(params[:chapter_id])
+  end
+
 end

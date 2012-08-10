@@ -1,9 +1,9 @@
 ScanGallery::Application.routes.draw do
   
-  resources :pages
-
   resources :mangas do
-    resources :chapters
+    resources :chapters, :except => [:index] do
+      resources :pages, :except => [:index]
+    end
   end
 
   # The priority is based upon order of creation:

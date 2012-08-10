@@ -1,12 +1,16 @@
 %p#notice= notice
 
-%p
-  %b Number:
-  = @page.number
-%p
-  %b Chapter:
-  = @page.chapter
+.well
+	= link_to 'Add Next Page', new_manga_chapter_page_path(@manga, @chapter)
+	\|
+	= link_to 'Edit', edit_manga_chapter_page_path(@manga, @chapter, @page)
+	\|
+	= link_to 'Back', manga_chapter_path(@manga, @chapter)
 
-= link_to 'Edit', edit_manga_chapter_page_path(@manga, @chapter, @page)
-\|
-= link_to 'Back', manga_chapter_path(@manga, @chapter)
+%p
+	%b Number:
+	= @page.number
+%p
+	= image_tag @page.image.url
+
+

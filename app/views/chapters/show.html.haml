@@ -3,12 +3,15 @@
 
 %p#notice= notice
 
-= link_to 'Edit', edit_manga_chapter_path(@manga, @chapter)
-\|
-= link_to 'Back', manga_chapters_path(@manga)
+.well
+	= link_to 'Add Page', new_manga_chapter_page_path(@manga, @chapter)
+	\|
+	= link_to 'Edit', edit_manga_chapter_path(@manga, @chapter)
+	\|
+	= link_to 'Back', manga_chapters_path(@manga)
 
 %ul.thumbnails
 	- @chapter.pages.each do |page|
 		%li.span3
 			%a.thumbnail
-				= image_tag page.image_url
+				= image_tag page.image.url 

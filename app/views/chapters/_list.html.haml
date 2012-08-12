@@ -1,9 +1,3 @@
-%table.table.table-condensed
-  %tbody
-    - chapters.each do |chapter|
-      %tr
-        %td= link_to chapter.number, [@manga, chapter]
-        %td
-          .btn-group
-            = link_to 'Edit', edit_manga_chapter_path(@manga, chapter), :class => "btn"
-            = link_to 'Destroy', [@manga, chapter], :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
+%ul.unstyled
+  - chapters.each do |chapter|
+    %li= link_to chapter.number, [@manga, chapter]

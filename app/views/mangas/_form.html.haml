@@ -1,8 +1,8 @@
 = simple_form_for(@manga) do |f|
-  = f.error_notification
+  
 
   .form-inputs
     = f.input :name
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => "btn-primary"

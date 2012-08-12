@@ -14,9 +14,7 @@
 				%li= link_to 'Edit Chapter', edit_manga_chapter_path(@manga, @chapter)
 				%li.divider
 				%li= link_to 'Destroy Chapter', [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete
-	%h1= "#{@chapter.manga_name} #{(@chapter.number)}"
-
-%p#notice= notice
+	%h1= @chapter.full_name
 
 
 %ul.thumbnails

@@ -1,3 +1,5 @@
+= link_to 'Back', mangas_path
+
 .page-header
 	%h1= @manga.name
 	
@@ -6,22 +8,22 @@
 		%button.close{"data-dismiss"=>"alert"} ×
 		%p#notice= notice
 
-.row
+.row-fluid
 	.span9
-		.well
-			= link_to 'Back', mangas_path, :class => "btn"
-			= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary"
+		%div
+			= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary pull-right"
+			%h2 Chapter List
 
-		= render :partial => "chapters/list", :locals => { :chapters => @manga.chapters }
+			= render :partial => "chapters/list", :locals => { :chapters => @manga.chapters }
 
 	.span3.well
-		
-		.btn-group
-			%button.btn.btn-inverse Actions
-			%button.btn.dropdown-toggle.btn-inverse{ "data-toggle" => "dropdown"}
-				%span.caret
+		%div
+			.btn-group
+				%button.btn.btn-inverse Actions
+				%button.btn.dropdown-toggle.btn-inverse{ "data-toggle" => "dropdown"}
+					%span.caret
 
-			%ul.dropdown-menu
-				%li= link_to 'Edit Manga', edit_manga_path(@manga)
-				%li.divider
-				%li= link_to 'Destroy Manga', @manga, :confirm => 'Are you sure?', :method => :delete
+				%ul.dropdown-menu
+					%li= link_to 'Edit Manga', edit_manga_path(@manga)
+					%li.divider
+					%li= link_to 'Destroy Manga', @manga, :confirm => 'Are you sure?', :method => :delete

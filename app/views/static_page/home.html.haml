@@ -1,0 +1,25 @@
+%h1 StaticPage#home
+%p Find me in app/views/static_page/home.html.haml
+
+.row
+	.span6
+		%table.table
+			%thead
+				%tr
+					%th Latest Manga
+			%tbody
+				- Manga.last_ten_manga.each do |manga|
+					%tr
+						%td= link_to manga.name, manga_path(manga)
+	.span6
+		%table.table
+			%thead
+				%tr
+					%th Latest Chapter
+			%tbody
+			- Chapter.last_ten_chapter.each do |chapter|
+				- if chapter.manga
+					%tr
+						%td= link_to chapter.full_name, manga_chapter_path(chapter.manga, chapter)
+
+

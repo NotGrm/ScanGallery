@@ -1,0 +1,28 @@
+!!! 5
+%html
+	%head
+		%title ScanGallery
+		= stylesheet_link_tag    "application", :media => "all"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	%body
+		.navbar.navbar-fixed-top
+			.navbar-inner
+				.container
+					%a.brand{ :href =>"#"}
+						Scan Gallery
+		.container-fluid
+			.row-fluid
+				.span3
+					.well
+						%ul.nav.nav-list
+							%li.nav-header General
+							%li= link_to "Home", root_path
+
+							%li.nav-header Manga List
+							- Manga.order(:name).each do |manga|
+								%li= link_to manga.name, manga_path(manga)
+
+				.span9
+					= yield

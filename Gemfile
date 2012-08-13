@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'bootstrap-sass'
+gem 'rmagick'
 gem 'carrierwave'
 gem 'haml-rails'
 gem 'jquery-rails'

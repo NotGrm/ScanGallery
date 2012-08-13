@@ -14,4 +14,12 @@ class Page < ActiveRecord::Base
   	Page.find_by_number_and_chapter_id(number + 1, chapter.id)
   end
 
+  def manga_name
+    chapter.manga_name
+  end
+
+  def chapter_number
+    chapter.number
+  end
+
 end

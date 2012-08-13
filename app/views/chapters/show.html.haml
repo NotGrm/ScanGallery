@@ -20,4 +20,4 @@
 %ul.thumbnails
 	- @chapter.pages.each do |page|
 		%li.span3
-			= link_to image_tag(page.image.thumb('240x240').url), manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail" 
+			= link_to image_tag(page.image.url), manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail" 

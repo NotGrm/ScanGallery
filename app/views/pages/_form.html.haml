@@ -1,10 +1,8 @@
 = simple_form_for([@manga, @chapter, @page], :html => {:multipart => true} )do |f|
-  = f.error_notification
 
   .form-inputs
     = f.input :number
     = f.input :image, :as => :file
-    = image_tag @page.image.thumb('100x100').url if @page.image_uid
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => "btn-primary"

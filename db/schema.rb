@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808113802) do
+ActiveRecord::Schema.define(:version => 20120813111328) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "number"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20120808113802) do
     t.integer  "chapter_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "image_uid"
     t.string   "image_name"
+    t.string   "image"
   end
 
   add_index "pages", ["chapter_id"], :name => "index_pages_on_chapter_id"

@@ -2,10 +2,9 @@ class Page < ActiveRecord::Base
   belongs_to :chapter
   attr_accessible :number, :image
 
-  image_accessor :image
+  mount_uploader :image, ImageUploader
 
   validates :number, :presence => true
-  validates_presence_of :image
 
   def previous_page
   	Page.find_by_number_and_chapter_id(number - 1, chapter.id)

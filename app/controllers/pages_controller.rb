@@ -43,17 +43,23 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    @page = @chapter.pages.build(params[:page])
+    # @page = @chapter.pages.build(params[:page])
 
-    respond_to do |format|
+    # respond_to do |format|
+    #   if @page.save
+    #     format.html { redirect_to [@manga, @chapter, @page], notice: 'Page was successfully created.' }
+    #     format.json { render json: @page, status: :created, location: @page }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @page.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    @page = @chapter.pages.build(:image => params[:file])
       if @page.save
-        format.html { redirect_to [@manga, @chapter, @page], notice: 'Page was successfully created.' }
-        format.json { render json: @page, status: :created, location: @page }
+        head 200
       else
-        format.html { render action: "new" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
+        render :action => "new"
       end
-    end
   end
 
   # PUT /pages/1

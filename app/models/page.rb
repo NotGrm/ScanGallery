@@ -4,7 +4,9 @@ class Page < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  #validates :number, :presence => true
+  before_validation :set_number
+
+  validates :number, :presence => true
 
   def previous_page
   	Page.find_by_number_and_chapter_id(number - 1, chapter.id)
@@ -22,16 +24,11 @@ class Page < ActiveRecord::Base
     chapter.number
   end
 
-  #one convenient method to pass jq_upload the necessary information
-  def to_jq_upload
-    {
-      "name" => read_attribute(:image),
-      "size" => image.size,
-      "url" => image.url,
-      "thumbnail_url" => image.thumb.url,
-      "delete_url" => picture_path(:id => id),
-      "delete_type" => "DELETE" 
-    }
-  end
+  private
+    def set_number
+      previous = chapter.pages.order("number").last
+
+      self.number = previous ? previous.number + 1 : 0
+    end
 
 end

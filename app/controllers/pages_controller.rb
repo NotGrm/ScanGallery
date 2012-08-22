@@ -59,18 +59,11 @@ class PagesController < ApplicationController
     # end
     @page = @chapter.pages.build(:image => params[:file])
 
-    previous = @chapter.pages.order("number").last
-    if previous
-      @page.number = previous.number + 1
+    if @page.save
+      head 200
     else
-      @page.number = 0
+      render :action => "new"
     end
-
-      if @page.save
-        head 200
-      else
-        render :action => "new"
-      end
   end
 
   # PUT /pages/1

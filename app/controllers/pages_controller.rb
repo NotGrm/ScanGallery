@@ -58,6 +58,14 @@ class PagesController < ApplicationController
     #   end
     # end
     @page = @chapter.pages.build(:image => params[:file])
+
+    previous = @chapter.pages.order("number").last
+    if previous
+      @page.number = previous.number + 1
+    else
+      @page.number = 0
+    end
+
       if @page.save
         head 200
       else

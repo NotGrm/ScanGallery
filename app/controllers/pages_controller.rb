@@ -29,6 +29,9 @@ class PagesController < ApplicationController
   def new
     @page = @chapter.pages.build
 
+    gon.manga_id = @manga.id
+    gon.chapter_id = @chapter.id
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @page }

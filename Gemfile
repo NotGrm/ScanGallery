@@ -23,6 +23,7 @@ end
 gem 'bootstrap-sass'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'gon'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'simple_form'

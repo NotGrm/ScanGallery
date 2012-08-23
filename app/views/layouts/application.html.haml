@@ -3,10 +3,13 @@
 	%head
 		%title ScanGallery
 		= stylesheet_link_tag    "application", :media => "all"
+		= stylesheet_link_tag    "jquery.plupload.queue", :media => "all"
+		
 		= include_gon
-		= javascript_include_tag "plupload"
-		= javascript_include_tag "plupload.html5"
 		= javascript_include_tag "application"
+		= javascript_include_tag "plupload"
+		= javascript_include_tag "plupload.full"
+		= javascript_include_tag "jquery.plupload.queue"
 		= csrf_meta_tags
 
 	%body

@@ -1,6 +1,7 @@
-%div
-  #filelist
-  %br
-  %a#pickfiles{:href => "#"} [Select files]
-  %a#uploadfiles{:href => "#"} [Upload files]
+= simple_form_for([@manga, @chapter, @page], :html => {:multipart => true} )do |f|
 
+  .form-inputs
+    = f.input :number
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"

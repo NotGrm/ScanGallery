@@ -17,3 +17,5 @@
 /public/images
 /public/system/dragonfly
 /public/uploads
+
+*.DS_Store

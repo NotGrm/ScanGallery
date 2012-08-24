@@ -7,7 +7,6 @@ class ChaptersController < ApplicationController
     @chapter = Chapter.find_by_number(params[:id])
 
     ariane.add @manga.name, manga_path(@manga)
-
     ariane.add "#{@chapter.number}", @chapter
 
     respond_to do |format|

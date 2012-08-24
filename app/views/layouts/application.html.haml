@@ -25,10 +25,10 @@
 		.container-fluid
 			.row-fluid
 				.span3
-					.well
+					.well{:style => "max-width: 340px; padding: 8px 0;"}
 						%ul.nav.nav-list
 							%li.nav-header General
-							%li= link_to "Home", root_path
+							%li.active= link_to "Home", root_path
 
 							%li.nav-header Manga List
 							- Manga.order(:name).each do |manga|

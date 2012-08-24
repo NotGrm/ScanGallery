@@ -29,8 +29,8 @@ class PagesController < ApplicationController
   def new
     @page = @chapter.pages.build
 
-    gon.manga_id = @manga.id
-    gon.chapter_id = @chapter.id
+    gon.manga_id = @manga.permalink
+    gon.chapter_id = @chapter.number
 
     respond_to do |format|
       format.html # new.html.erb

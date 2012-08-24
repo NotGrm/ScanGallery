@@ -16,6 +16,7 @@
 				%li= link_to 'Destroy Chapter', [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete
 	%h1= @chapter.full_name
 
+= ariane.render
 
 %ul.thumbnails
 	- @chapter.pages.each do |page|

@@ -6,6 +6,10 @@ class ChaptersController < ApplicationController
   def show
     @chapter = Chapter.find_by_number(params[:id])
 
+    ariane.add @manga.name, manga_path(@manga)
+
+    ariane.add "#{@chapter.number}", @chapter
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @chapter }

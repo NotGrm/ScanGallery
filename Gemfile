@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'ariane'
 gem 'bootstrap-sass'
 gem 'rmagick'
 gem 'carrierwave'

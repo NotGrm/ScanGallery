@@ -1,4 +1,14 @@
 .page-header
+	.btn-toolbar.pull-right
+		.btn-group
+			= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary"
+
+		.btn-group
+			= link_to edit_manga_path(@manga), :class => "btn" do
+				%i.icon-pencil
+			= link_to @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn" do
+				%i.icon-trash
+
 	%h1= @manga.name
 
 = ariane.render
@@ -6,19 +16,6 @@
 .row-fluid
 	.span9
 		%div
-			= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary pull-right"
 			%h2 Chapter List
 
 			= render :partial => "chapters/list", :locals => { :chapters => @manga.chapters }
-
-	.span3.well
-		%div
-			.btn-group
-				%button.btn.btn-inverse Actions
-				%button.btn.dropdown-toggle.btn-inverse{ "data-toggle" => "dropdown"}
-					%span.caret
-
-				%ul.dropdown-menu
-					%li= link_to 'Edit Manga', edit_manga_path(@manga)
-					%li.divider
-					%li= link_to 'Destroy Manga', @manga, :confirm => 'Are you sure?', :method => :delete

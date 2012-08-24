@@ -4,7 +4,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1
   # GET /chapters/1.json
   def show
-    @chapter = Chapter.find(params[:id])
+    @chapter = Chapter.find_by_number(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +25,7 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/1/edit
   def edit
-    @chapter = Chapter.find(params[:id])
+    @chapter = Chapter.find_by_number(params[:id])
   end
 
   # POST /chapters
@@ -74,6 +74,6 @@ class ChaptersController < ApplicationController
 
   private
   def get_manga
-    @manga = Manga.find(params[:manga_id])
+    @manga = Manga.find_by_permalink!(params[:manga_id])
   end
 end

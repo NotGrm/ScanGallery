@@ -17,4 +17,8 @@ class Chapter < ActiveRecord::Base
   def manga_name
   	manga.name
   end
+
+  def to_param
+    "#{number}"
+  end
 end

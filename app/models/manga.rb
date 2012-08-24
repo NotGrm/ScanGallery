@@ -4,7 +4,13 @@ class Manga < ActiveRecord::Base
 
   validates :name, :presence => true
 
+  has_permalink :name, :param => true
+
   def self.last_ten_manga
   	Manga.order("created_at DESC").limit(10)
+  end
+
+  def to_param
+  	"#{permalink}"
   end
 end

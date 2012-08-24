@@ -24,6 +24,10 @@ class Page < ActiveRecord::Base
     chapter.number
   end
 
+  def to_param
+    "#{number}"
+  end
+
   private
     def set_number
       previous = chapter.pages.order("number").last

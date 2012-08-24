@@ -26,6 +26,7 @@ gem 'carrierwave'
 gem 'gon'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem "permalink_fu"
 gem 'simple_form'
 
 # To use ActiveModel has_secure_password

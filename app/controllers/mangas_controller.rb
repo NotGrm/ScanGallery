@@ -13,7 +13,8 @@ class MangasController < ApplicationController
   # GET /mangas/1
   # GET /mangas/1.json
   def show
-    @manga = Manga.find(params[:id])
+    #@manga = Manga.find(params[:id])
+    @manga = Manga.find_by_permalink!(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +35,7 @@ class MangasController < ApplicationController
 
   # GET /mangas/1/edit
   def edit
-    @manga = Manga.find(params[:id])
+    @manga = Manga.find_by_permalink!(params[:id])
   end
 
   # POST /mangas

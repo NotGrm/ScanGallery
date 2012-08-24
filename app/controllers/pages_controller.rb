@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    @page = Page.find(params[:id])
+    @page = Page.find_by_number(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,7 +40,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
+    @page = Page.find_by_number(params[:id])
   end
 
   # POST /pages
@@ -96,11 +96,11 @@ class PagesController < ApplicationController
 
   private
   def get_manga
-    @manga = Manga.find(params[:manga_id])
+    @manga = Manga.find_by_permalink!(params[:manga_id])
   end
 
   def get_chapter
-    @chapter = Chapter.find(params[:chapter_id])
+    @chapter = Chapter.find_by_number(params[:chapter_id])
   end
 
 end

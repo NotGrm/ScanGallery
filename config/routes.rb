@@ -10,6 +10,8 @@ ScanGallery::Application.routes.draw do
 
   resources :pages
 
+  match ':name' => 'mangas#show', :as => :manga_with_name
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

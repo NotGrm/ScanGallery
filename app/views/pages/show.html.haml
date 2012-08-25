@@ -1,3 +1,20 @@
+- content_for :navmenu do
+	%ul.nav
+		%li.dropdown 
+			%a.dropdown-toggle{"data-toggle" => "dropdown"}
+				Go to Chapter
+				%b.caret
+			%ul.dropdown-menu
+				- @manga.chapters.each do |chapter|
+					%li= link_to chapter.number, manga_chapter_page_path(@manga, chapter, chapter.pages.first)
+		%li.dropdown 
+			%a.dropdown-toggle{"data-toggle" => "dropdown"}
+				Go to Page
+				%b.caret
+			%ul.dropdown-menu
+				- @chapter.pages.each do |page|
+					%li= link_to page.number, manga_chapter_page_path(@manga, @chapter, page)
+
 = render 'nav'
 
 %div

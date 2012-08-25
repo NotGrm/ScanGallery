@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   before_filter :get_manga
   before_filter :get_chapter
 
+  layout "reader", :only => [:show]
+
   # GET /pages
   # GET /pages.json
   def index
@@ -16,6 +18,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+
     @page = Page.find_by_number(params[:id])
 
     respond_to do |format|

@@ -1,0 +1,18 @@
+!!! 5
+%html
+	%head
+		%title ScanGallery
+		= stylesheet_link_tag    "application", :media => "all"
+		
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	%body
+		.navbar.navbar-fixed-top
+			.navbar-inner
+				.container
+					= link_to "Scan Gallery", root_path, :class => "brand"
+					= yield :navmenu
+		.row
+			.span11.offset2
+				= yield

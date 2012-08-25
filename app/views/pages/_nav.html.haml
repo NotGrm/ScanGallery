@@ -1,12 +1,6 @@
 %div
 	%ul.pager
-		%li.previous
-			- if @page.previous_page
-				= link_to 'Previous', manga_chapter_page_path(@manga, @chapter, @page.previous_page)
-			- else
-				= link_to 'Back to manga', manga_path(@manga)
-		%li.next			
-			- if @page.next_page
-				= link_to 'Next', manga_chapter_page_path(@manga, @chapter, @page.next_page)
-			- else
-				= link_to 'Back to manga', manga_path(@manga)
+		%li{:class => @page.previous_page ? "previous" : "previous disabled"}
+			= link_to 'Previous', @page.previous_page ? manga_chapter_page_path(@manga, @chapter, @page.previous_page) : '#'
+		%li{:class => @page.next_page ? "next" : "next disabled"}
+			= link_to 'Next', @page.next_page ? manga_chapter_page_path(@manga, @chapter, @page.next_page) : '#'

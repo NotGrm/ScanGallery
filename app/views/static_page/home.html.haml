@@ -5,12 +5,14 @@
 .row
 	.span6
 		%h2 Latest Manga
+		%hr
 		%ul.nav.nav-tabs.nav-stacked
 			- Manga.last_ten_manga.each do |manga|
 				%li= link_to manga.name, manga_path(manga)
 		
 	.span6
 		%h2 Latest Chapter
+		%hr
 		%ul.nav.nav-tabs.nav-stacked
 			- Chapter.last_ten_chapter.each do |chapter|
 				- if chapter.manga

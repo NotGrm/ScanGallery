@@ -38,6 +38,9 @@ class MangasController < ApplicationController
   # GET /mangas/1/edit
   def edit
     @manga = Manga.find_by_permalink!(params[:id])
+
+    ariane.add @manga.name, manga_path(@manga)
+    ariane.add 'Edit', edit_manga_path(@manga)
   end
 
   # POST /mangas

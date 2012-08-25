@@ -1,3 +1,8 @@
-%ul.unstyled
-  - chapters.each do |chapter|
-    %li= link_to chapter.number, [@manga, chapter]
+%table.table
+	%thead
+		%th
+			%td
+	%tbody
+		- chapters.each do |chapter|
+			%tr
+				%td= link_to chapter.number, [@manga, chapter]

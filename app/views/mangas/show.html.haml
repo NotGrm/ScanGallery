@@ -13,9 +13,7 @@
 
 = ariane.render
 
-.row-fluid
-	.span9
-		%div
-			%h2 Chapter List
+%div
+	%h2 Chapter List
 
-			= render :partial => "chapters/list", :locals => { :chapters => @manga.chapters }
+	= render :partial => "chapters/list", :locals => { :chapters => @manga.chapters.order(:number) }

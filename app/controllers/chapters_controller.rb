@@ -29,6 +29,11 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/edit
   def edit
     @chapter = Chapter.find_by_number(params[:id])
+
+    ariane.add @manga.name, manga_path(@manga)
+    ariane.add "#{@chapter.number}", manga_chapter_path(@manga, @chapter)
+    ariane.add 'Edit', edit_manga_chapter_path(@manga, @chapter)
+
   end
 
   # POST /chapters

@@ -1,7 +1,8 @@
 = render 'nav'
 
 %div
-	= image_tag @page.image.url
+	= link_to (@page.next_page ? manga_chapter_page_path(@manga, @chapter, @page.next_page) : '#'), :class => "thumbnail" do
+		= image_tag @page.image.url
 
 = render 'nav'
 

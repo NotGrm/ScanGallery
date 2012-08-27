@@ -19,7 +19,7 @@
 					= link_to "Scan Gallery", root_path, :class => "brand"
 
 					%ul.nav
-						%li= link_to 'New Manga', new_manga_path
+						%li{:class => current_page?(new_manga_path) ? "active" : ""}= link_to 'New Manga', new_manga_path
 
 		.container-fluid
 			.row-fluid

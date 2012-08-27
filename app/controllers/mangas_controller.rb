@@ -29,6 +29,8 @@ class MangasController < ApplicationController
   def new
     @manga = Manga.new
 
+    ariane.add 'New Manga', new_manga_path
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @manga }

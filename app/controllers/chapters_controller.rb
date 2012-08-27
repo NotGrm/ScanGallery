@@ -1,12 +1,11 @@
 class ChaptersController < ApplicationController
-  before_filter :get_manga
+  prepend_before_filter :get_manga
 
   # GET /chapters/1
   # GET /chapters/1.json
   def show
     @chapter = Chapter.find_by_number(params[:id])
 
-    ariane.add @manga.name, manga_path(@manga)
     ariane.add "#{@chapter.number}", @chapter
 
     respond_to do |format|
@@ -30,7 +29,6 @@ class ChaptersController < ApplicationController
   def edit
     @chapter = Chapter.find_by_number(params[:id])
 
-    ariane.add @manga.name, manga_path(@manga)
     ariane.add "#{@chapter.number}", manga_chapter_path(@manga, @chapter)
     ariane.add 'Edit', edit_manga_chapter_path(@manga, @chapter)
 
@@ -83,5 +81,10 @@ class ChaptersController < ApplicationController
   private
   def get_manga
     @manga = Manga.find_by_permalink!(params[:manga_id])
+  end
+
+  def set_ariane
+    super
+    ariane.add @manga.name, manga_path(@manga)
   end
 end

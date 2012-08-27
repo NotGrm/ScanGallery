@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  before_filter :get_manga
-  before_filter :get_chapter
+  prepend_before_filter :get_manga
+  prepend_before_filter :get_chapter
 
   layout "reader", :only => [:show]
 
@@ -31,6 +31,8 @@ class PagesController < ApplicationController
   # GET /pages/new.json
   def new
     @page = @chapter.pages.build
+
+    ariane.add "Add Pages", '#'
 
     gon.manga_id = @manga.permalink
     gon.chapter_id = @chapter.number
@@ -104,6 +106,12 @@ class PagesController < ApplicationController
 
   def get_chapter
     @chapter = Chapter.find_by_number(params[:chapter_id])
+  end
+
+  def set_ariane
+    super    
+    ariane.add @manga.name, manga_path(@manga)
+    ariane.add "#{@chapter.number}", manga_chapter_path(@manga,@chapter)
   end
 
 end

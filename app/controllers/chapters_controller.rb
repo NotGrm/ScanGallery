@@ -19,6 +19,8 @@ class ChaptersController < ApplicationController
   def new
     @chapter = @manga.chapters.build
 
+    ariane.add 'New chapter', new_manga_chapter_path(@manga)
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @chapter }

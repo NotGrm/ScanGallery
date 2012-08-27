@@ -27,11 +27,12 @@
 					.well{:style => "max-width: 340px; padding: 8px 0;"}
 						%ul.nav.nav-list
 							%li.nav-header General
-							%li.active= link_to "Home", root_path
+							%li{:class => current_page?(root_path) ? "active" : ""}= link_to "Home", root_path
 
 							%li.nav-header Manga List
 							- Manga.order(:name).each do |manga|
-								%li= link_to manga.name, manga_path(manga)
+								%li{:class => @manga && @manga.id == manga.id ? "active" : ""}
+									= link_to manga.name, manga_path(manga)
 
 				.span9
 					= render 'layouts/messages'

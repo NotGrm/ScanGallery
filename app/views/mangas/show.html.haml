@@ -16,4 +16,4 @@
 %div
 	%h2 Chapter List
 
-	= render :partial => "chapters/list", :locals => { :chapters => @manga.chapters.order(:number) }
+	= render :partial => "chapters/list", :locals => { :chapters => @manga.ordered_chapters }

@@ -21,4 +21,8 @@ class Chapter < ActiveRecord::Base
   def to_param
     "#{number}"
   end
+
+  def ordered_pages(order = "ASC")
+    pages.order("number #{order}")
+  end
 end

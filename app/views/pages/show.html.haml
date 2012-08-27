@@ -5,14 +5,14 @@
 				Go to Chapter
 				%b.caret
 			%ul.dropdown-menu
-				- @manga.chapters.order(:number).each do |chapter|
+				- @manga.ordered_chapters.each do |chapter|
 					%li= link_to chapter.number, manga_chapter_page_path(@manga, chapter, chapter.pages.first)
 		%li.dropdown 
 			%a.dropdown-toggle{"data-toggle" => "dropdown"}
 				Go to Page
 				%b.caret
 			%ul.dropdown-menu
-				- @chapter.pages.order(:number).each do |p|
+				- @chapter.ordered_pages.each do |p|
 					%li= link_to p.number, manga_chapter_page_path(@manga, @chapter, p)
 
 = render 'nav'

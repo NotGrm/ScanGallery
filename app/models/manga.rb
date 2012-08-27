@@ -10,6 +10,10 @@ class Manga < ActiveRecord::Base
   	Manga.order("created_at DESC").limit(10)
   end
 
+  def ordered_chapters(order = "ASC")
+    chapters.order("number #{order}")
+  end
+
   def to_param
   	"#{permalink}"
   end

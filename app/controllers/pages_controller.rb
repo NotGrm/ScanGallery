@@ -72,7 +72,7 @@ class PagesController < ApplicationController
   # PUT /pages/1
   # PUT /pages/1.json
   def update
-    @page = Page.find(params[:id])
+    @page = Page.find_by_numberv(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
@@ -88,7 +88,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.find_by_number(params[:id])
     @page.destroy
 
     respond_to do |format|

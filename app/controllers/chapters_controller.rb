@@ -55,7 +55,7 @@ class ChaptersController < ApplicationController
   # PUT /chapters/1
   # PUT /chapters/1.json
   def update
-    @chapter = Chapter.find(params[:id])
+    @chapter = Chapter.find_by_number(params[:id])
 
     respond_to do |format|
       if @chapter.update_attributes(params[:chapter])
@@ -71,7 +71,7 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1
   # DELETE /chapters/1.json
   def destroy
-    @chapter = Chapter.find(params[:id])
+    @chapter = Chapter.find_by_number(params[:id])
     @chapter.destroy
 
     respond_to do |format|

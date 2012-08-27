@@ -62,7 +62,7 @@ class MangasController < ApplicationController
   # PUT /mangas/1
   # PUT /mangas/1.json
   def update
-    @manga = Manga.find(params[:id])
+    @manga = Manga.find_by_permalink(params[:id])
 
     respond_to do |format|
       if @manga.update_attributes(params[:manga])
@@ -78,7 +78,7 @@ class MangasController < ApplicationController
   # DELETE /mangas/1
   # DELETE /mangas/1.json
   def destroy
-    @manga = Manga.find(params[:id])
+    @manga = Manga.find_by_permalink(params[:id])
     @manga.destroy
 
     respond_to do |format|

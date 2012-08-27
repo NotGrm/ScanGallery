@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
 
-    @page = Page.find_by_number(params[:id])
+    @page = @chapter.pages.find_by_number(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

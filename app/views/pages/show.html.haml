@@ -12,8 +12,8 @@
 				Go to Page
 				%b.caret
 			%ul.dropdown-menu
-				- @chapter.pages.each do |page|
-					%li= link_to page.number, manga_chapter_page_path(@manga, @chapter, page)
+				- @chapter.pages.each do |p|
+					%li= link_to p.number, manga_chapter_page_path(@manga, @chapter, p)
 
 = render 'nav'
 

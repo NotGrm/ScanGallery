@@ -1,4 +1,4 @@
-$ ->
+!$ ->
   
   # Setup html5 version
   $("#html5_uploader").pluploadQueue

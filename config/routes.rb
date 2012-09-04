@@ -1,5 +1,9 @@
 ScanGallery::Application.routes.draw do
   
+  get "request_controller/new"
+
+  get "request_controller/create"
+
   get "static_page/home"
 
   resources :mangas do

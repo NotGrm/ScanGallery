@@ -22,7 +22,7 @@ end
 
 gem 'ariane'
 gem 'bootstrap-sass'
-gem 'rmagick'
+gem 'rmagick', '2.13.2'
 gem 'carrierwave'
 gem 'gon'
 gem 'haml-rails'

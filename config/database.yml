@@ -23,5 +23,6 @@ production:
   server: localhost
   database: scangallery
   username: scangallery
+  password: scangallery
   pool: 5
   timeout: 5000

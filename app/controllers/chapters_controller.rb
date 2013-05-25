@@ -43,7 +43,8 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save
-        format.html { redirect_to [@manga, @chapter], notice: 'Chapter was successfully created.' }
+        # format.html { redirect_to [@manga, @chapter], notice: 'Chapter was successfully created.' }
+        format.html { redirect_to new_manga_chapter_page_path(@manga, @chapter), notice: 'Chapter was successfully created.' }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
         format.html { render action: "new" }

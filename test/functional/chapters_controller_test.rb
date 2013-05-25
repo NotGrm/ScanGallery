@@ -16,7 +16,7 @@ class ChaptersControllerTest < ActionController::TestCase
       post :create, chapter: { number: @chapter.number}, :manga_id => @manga.id
     end
 
-    assert_redirected_to manga_chapter_path(@manga, assigns(:chapter))
+    assert_redirected_to new_manga_chapter_page_path(@manga, assigns(:chapter))
   end
 
   test "should show chapter" do

@@ -32,7 +32,9 @@
 							%li.nav-header Manga List
 							- Manga.order(:name).each do |manga|
 								%li{:class => @manga && @manga.id == manga.id ? "active" : ""}
-									= link_to manga.name, manga_path(manga)
+									= link_to manga_path(manga) do 
+										= manga.name
+										%span.badge.badge-info.pull-right= manga.unread_chapters_number
 
 				.span9
 					= render 'layouts/messages'

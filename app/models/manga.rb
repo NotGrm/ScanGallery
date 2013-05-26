@@ -1,5 +1,5 @@
 class Manga < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :is_unread
   has_many :chapters
 
   validates :name, :presence => true
@@ -12,6 +12,14 @@ class Manga < ActiveRecord::Base
 
   def ordered_chapters(order = "ASC")
     chapters.order("number #{order}")
+  end
+
+  def unread_chapters_number
+    count = 0
+    chapters.each do |chapter|
+      count = count + 1 unless chapter.is_read
+    end
+    return count
   end
 
   def to_param

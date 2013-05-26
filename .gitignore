@@ -21,3 +21,4 @@
 *.DS_Store
 
 config/database.yml
+config/deploy.rb

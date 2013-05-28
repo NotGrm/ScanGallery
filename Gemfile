@@ -35,6 +35,7 @@ gem 'jquery-rails'
 gem "permalink_fu"
 gem 'simple_form'
 gem 'pg'
+gem 'kaminari'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

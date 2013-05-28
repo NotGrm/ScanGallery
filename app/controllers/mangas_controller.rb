@@ -15,6 +15,7 @@ class MangasController < ApplicationController
   def show
     #@manga = Manga.find(params[:id])
     @manga = Manga.find_by_permalink!(params[:id])
+    @chapters = @manga.ordered_chapters.page(params[:page]).per 10
     
     ariane.add @manga.name, @manga
 

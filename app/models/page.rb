@@ -8,6 +8,8 @@ class Page < ActiveRecord::Base
 
   validates :number, :presence => true
 
+  before_destroy :destroy_page_file
+
   def previous_page
   	Page.find_by_number_and_chapter_id(number - 1, chapter.id)
   end
@@ -33,6 +35,10 @@ class Page < ActiveRecord::Base
       previous = chapter.pages.order("number").last
 
       self.number = previous ? previous.number + 1 : 0
+    end
+
+    def destroy_page_file
+      remove_image!
     end
 
 end

@@ -1,6 +1,6 @@
 class Chapter < ActiveRecord::Base
   belongs_to :manga
-  has_many :pages
+  has_many :pages, :dependent => :destroy
 
   attr_accessible :number, :team
 

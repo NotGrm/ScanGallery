@@ -1,5 +1,6 @@
 class ChaptersController < ApplicationController
   prepend_before_filter :get_manga
+  before_filter :get_teams, only: [:new, :edit] 
 
   # GET /chapters/1
   # GET /chapters/1.json
@@ -30,6 +31,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/edit
   def edit
     @chapter = Chapter.find_by_number(params[:id])
+    
 
     ariane.add "#{@chapter.number}", manga_chapter_path(@manga, @chapter)
     ariane.add 'Edit', edit_manga_chapter_path(@manga, @chapter)
@@ -84,6 +86,10 @@ class ChaptersController < ApplicationController
   private
   def get_manga
     @manga = Manga.find_by_permalink!(params[:manga_id])
+  end
+
+  def get_teams
+    @teams = Chapter.uniq.pluck(:team)
   end
 
   def set_ariane

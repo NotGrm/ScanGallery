@@ -2,7 +2,7 @@ class Chapter < ActiveRecord::Base
   belongs_to :manga
   has_many :pages
 
-  attr_accessible :number
+  attr_accessible :number, :team
 
   validates :number, :presence => true
 

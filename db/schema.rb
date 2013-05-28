@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130525211045) do
+ActiveRecord::Schema.define(:version => 20130527173719) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "number"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130525211045) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "is_read",    :default => false
+    t.string   "team"
   end
 
   add_index "chapters", ["manga_id"], :name => "index_chapters_on_manga_id"

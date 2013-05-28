@@ -9,7 +9,12 @@
 			= link_to [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete, :class => "btn" do
 				%i.icon-trash
 			
-	%h1= @chapter.full_name
+	%h1
+		= @chapter.full_name
+		- if @chapter.team
+			%small
+				by
+				= @chapter.team
 
 = ariane.render
 

@@ -1,9 +1,13 @@
 = simple_form_for([@manga,@chapter]) do |f|
 
 	%legend Base Information
-
-	.form-inputs
-		= f.input :number
+	.row
+		.span6
+			.form-inputs
+				= f.input :number
+		.span6
+			.form-inputs
+				= f.input :team, input_html: {data: {provide: "typeahead", source: @teams.compact}, autocomplete: "off"}
 
 	.form-actions
 		= f.button :submit, :class => "btn-primary"

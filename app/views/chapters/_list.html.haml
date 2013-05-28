@@ -1,8 +1,8 @@
-%table.table
-	%thead
-		%th
-			%td
-	%tbody
-		- chapters.each do |chapter|
-			%tr
-				%td= link_to chapter.number, [@manga, chapter]
+/ %table.table.table-hover.table-condensed
+/ 	%thead
+/ 		%th
+/ 			%td
+/ 	%tbody
+%ul.nav.nav-tabs.nav-stacked
+	- chapters.each do |chapter|
+		%li= link_to chapter.number, [@manga, chapter]

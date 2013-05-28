@@ -13,13 +13,12 @@
 		= csrf_meta_tags
 
 	%body
-		.navbar.navbar-fixed-top
+		.navbar.navbar-fixed-top.navbar-inverse
 			.navbar-inner
 				.container
 					= link_to "Scan Gallery", root_path, :class => "brand"
 
 					%ul.nav
-						%li{:class => current_page?(new_manga_path) ? "active" : ""}= link_to 'New Manga', new_manga_path
 
 		.container-fluid
 			.row-fluid
@@ -28,6 +27,7 @@
 						%ul.nav.nav-list
 							%li.nav-header General
 							%li{:class => current_page?(root_path) ? "active" : ""}= link_to "Home", root_path
+							%li{:class => current_page?(new_manga_path) ? "active" : ""}= link_to 'Add Manga', new_manga_path
 
 							%li.nav-header Manga List
 							- Manga.order(:name).each do |manga|

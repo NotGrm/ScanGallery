@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'ariane'
-gem 'bootstrap-sass'
+gem "twitter-bootstrap-rails"
 gem 'rmagick', '2.13.2'
 gem 'carrierwave'
 gem 'gon'

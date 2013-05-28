@@ -143,7 +143,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   carrierwave
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   gon
   haml-rails
   jquery-rails
@@ -152,7 +152,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.13)
   rmagick (= 2.13.2)
-  sass-rails (~> 3.2.3)
+  sass-rails
   simple_form
   sqlite3
   twitter-bootstrap-rails

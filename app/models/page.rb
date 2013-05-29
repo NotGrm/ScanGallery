@@ -1,13 +1,12 @@
 class Page < ActiveRecord::Base
   belongs_to :chapter
-  attr_accessible :number, :image
+  attr_accessible :number, :image, :chapter
 
   mount_uploader :image, ImageUploader
 
-  before_validation :set_number
-
   validates :number, :presence => true
 
+  before_validation :set_number, :on => :create
   before_destroy :destroy_page_file
 
   def previous_page

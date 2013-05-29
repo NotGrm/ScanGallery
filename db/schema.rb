@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20130527173719) do
     t.integer  "chapter_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "image_name"
     t.string   "image"
   end
 

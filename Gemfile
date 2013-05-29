@@ -25,6 +25,10 @@ group :development do
   gem 'binding_of_caller'
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'ariane'
 gem "twitter-bootstrap-rails"
 gem 'rmagick', '2.13.2'
@@ -34,7 +38,6 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem "permalink_fu"
 gem 'simple_form'
-gem 'pg'
 gem 'kaminari'
 
 # To use ActiveModel has_secure_password

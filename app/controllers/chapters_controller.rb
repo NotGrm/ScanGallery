@@ -49,6 +49,8 @@ class ChaptersController < ApplicationController
         format.html { redirect_to new_manga_chapter_page_path(@manga, @chapter), notice: 'Chapter was successfully created.' }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
+        get_teams
+
         format.html { render action: "new" }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
@@ -65,6 +67,8 @@ class ChaptersController < ApplicationController
         format.html { redirect_to [@manga, @chapter], notice: 'Chapter was successfully updated.' }
         format.json { head :no_content }
       else
+        get_teams
+
         format.html { render action: "edit" }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end

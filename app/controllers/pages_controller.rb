@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   prepend_before_filter :get_manga
   prepend_before_filter :get_chapter
 
+  after_filter :mark_page_as_read
+
   layout "reader", :only => [:show]
 
   # GET /pages
@@ -112,6 +114,10 @@ class PagesController < ApplicationController
     super    
     ariane.add @manga.name, manga_path(@manga)
     ariane.add "#{@chapter.number}", manga_chapter_path(@manga,@chapter)
+  end
+
+  def mark_page_as_read
+    @page.mark_as_read
   end
 
 end

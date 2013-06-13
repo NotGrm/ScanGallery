@@ -34,7 +34,8 @@
 								%li{:class => @manga && @manga.id == manga.id ? "active" : ""}
 									= link_to manga_path(manga) do 
 										= manga.name
-										%span.badge.badge-info.pull-right= manga.unread_chapters_number
+										- if manga.unread_chapters_number > 0
+											%span.badge.badge-info.pull-right= manga.unread_chapters_number
 
 				.span9
 					= render 'layouts/messages'

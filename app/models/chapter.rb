@@ -7,6 +7,13 @@ class Chapter < ActiveRecord::Base
   validates :number, :presence => true
   validate :number_cannot_be_duplicated
 
+  def is_read?
+    pages.each do |page|
+      return false unless page.is_read
+    end
+    return true
+  end
+
   def self.last_ten_chapter
   	Chapter.order("created_at DESC").limit(10)
   end

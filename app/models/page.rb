@@ -1,6 +1,7 @@
 class Page < ActiveRecord::Base
+  attr_accessible :number, :is_read, :image, :chapter
+
   belongs_to :chapter
-  attr_accessible :number, :image, :chapter
 
   mount_uploader :image, ImageUploader
 
@@ -27,6 +28,11 @@ class Page < ActiveRecord::Base
 
   def to_param
     "#{number}"
+  end
+
+  def mark_as_read
+    self.is_read = true
+    self.save
   end
 
   private

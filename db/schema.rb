@@ -11,14 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527173719) do
+ActiveRecord::Schema.define(:version => 20130613184400) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "number"
     t.integer  "manga_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "is_read",    :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "team"
   end
 
@@ -34,9 +33,11 @@ ActiveRecord::Schema.define(:version => 20130527173719) do
   create_table "pages", :force => true do |t|
     t.integer  "number"
     t.integer  "chapter_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "image_name"
     t.string   "image"
+    t.boolean  "is_read",    :default => false
   end
 
   add_index "pages", ["chapter_id"], :name => "index_pages_on_chapter_id"

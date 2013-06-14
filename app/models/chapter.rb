@@ -14,6 +14,12 @@ class Chapter < ActiveRecord::Base
     return true
   end
 
+  def read_percent
+    total = pages.count
+    reads = pages.to_a.count{|page| page.is_read }
+    percent = reads * 100 / total
+  end
+
   def self.last_ten_chapter
   	Chapter.order("created_at DESC").limit(10)
   end

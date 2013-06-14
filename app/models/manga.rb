@@ -15,11 +15,7 @@ class Manga < ActiveRecord::Base
   end
 
   def unread_chapters_number
-    count = 0
-    chapters.each do |chapter|
-      count = count + 1 unless chapter.is_read?
-    end
-    return count
+    chapters.to_a.count{|chapter|chapter.is_read?}
   end
 
   def to_param

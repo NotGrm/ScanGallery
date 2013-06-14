@@ -8,16 +8,14 @@ class Chapter < ActiveRecord::Base
   validate :number_cannot_be_duplicated
 
   def is_read?
-    pages.each do |page|
-      return false unless page.is_read
-    end
-    return true
+    pages.to_a.count{|page|!page.is_read} > 0
   end
 
   def read_percent
     total = pages.count
     reads = pages.to_a.count{|page| page.is_read }
-    percent = reads * 100 / total
+    
+    reads * 100 / total
   end
 
   def self.last_ten_chapter

@@ -35,6 +35,11 @@ class Page < ActiveRecord::Base
     self.save
   end
 
+  def mark_as_unread
+    self.is_read = false
+    self.save
+  end
+
   private
     def set_number
       previous = chapter.pages.order("number").last

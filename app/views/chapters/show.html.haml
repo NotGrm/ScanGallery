@@ -4,6 +4,12 @@
 			= link_to 'Add Page', new_manga_chapter_page_path(@manga, @chapter), :class => "btn btn-primary"
 
 		.btn-group
+			= link_to read_manga_chapter_path(@manga, @chapter), :class => "btn" do
+				%i.icon-eye-open
+			= link_to unread_manga_chapter_path(@manga, @chapter), :class => "btn" do
+				%i.icon-eye-close
+
+		.btn-group
 			= link_to edit_manga_chapter_path(@manga, @chapter), :class => "btn" do
 				%i.icon-pencil
 			= link_to [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete, :class => "btn" do

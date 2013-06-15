@@ -15,6 +15,32 @@ class ChaptersController < ApplicationController
     end
   end
 
+  # GET /chapters/1/read
+  # GET /chapters/1/read.json
+  def read
+    @chapter = Chapter.find_by_number(params[:id])
+
+    @chapter.pages.each{|page| page.mark_as_read}
+
+    respond_to do |format|
+      format.html { redirect_to manga_chapter_path(@manga, @chapter)}
+      format.json { render json: @chapter }
+    end
+  end
+
+  # GET /chapters/1/unread
+  # GET /chapters/1/unread.json
+  def unread
+    @chapter = Chapter.find_by_number(params[:id])
+
+    @chapter.pages.each{|page| page.mark_as_unread}
+
+    respond_to do |format|
+      format.html { redirect_to manga_chapter_path(@manga, @chapter)}
+      format.json { render json: @chapter }
+    end
+  end
+
   # GET /chapters/new
   # GET /chapters/new.json
   def new

@@ -1,5 +1,5 @@
 ScanGallery::Application.routes.draw do
-  
+
   get "request_controller/new"
 
   get "request_controller/create"
@@ -9,6 +9,10 @@ ScanGallery::Application.routes.draw do
   resources :mangas do
     resources :chapters, :except => [:index] do
       resources :pages, :except => [:index]
+      member do
+        get 'read'
+        get 'unread'
+      end
     end
   end
 

@@ -36,7 +36,7 @@ gem 'carrierwave'
 gem 'gon'
 gem 'haml-rails'
 gem 'jquery-rails'
-gem "permalink_fu"
+gem "friendly_id"
 gem 'simple_form'
 gem 'kaminari'
 

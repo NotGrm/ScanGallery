@@ -53,6 +53,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    friendly_id (4.0.9)
     gon (4.1.0)
       actionpack (>= 2.3.0)
       json
@@ -78,7 +79,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.4)
-    permalink_fu (1.0.0)
     pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -144,11 +144,11 @@ DEPENDENCIES
   binding_of_caller
   carrierwave
   coffee-rails
+  friendly_id
   gon
   haml-rails
   jquery-rails
   kaminari
-  permalink_fu
   pg
   rails (= 3.2.13)
   rmagick (= 2.13.2)

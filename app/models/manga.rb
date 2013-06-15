@@ -1,10 +1,11 @@
 class Manga < ActiveRecord::Base
+  extend FriendlyId
   attr_accessible :name
   has_many :chapters
 
   validates :name, :presence => true
 
-  has_permalink :name, :param => true
+  friendly_id :name, use: :slugged
 
   def self.last_ten_manga
   	Manga.order("created_at DESC").limit(10)
@@ -16,9 +17,5 @@ class Manga < ActiveRecord::Base
 
   def unread_chapters_number
     chapters.to_a.count{|chapter|chapter.is_read?}
-  end
-
-  def to_param
-  	"#{permalink}"
   end
 end

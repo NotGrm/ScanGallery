@@ -115,7 +115,7 @@ class ChaptersController < ApplicationController
 
   private
   def get_manga
-    @manga = Manga.find_by_permalink!(params[:manga_id])
+    @manga = Manga.find(params[:manga_id])
   end
 
   def get_teams

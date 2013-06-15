@@ -13,8 +13,7 @@ class MangasController < ApplicationController
   # GET /mangas/1
   # GET /mangas/1.json
   def show
-    #@manga = Manga.find(params[:id])
-    @manga = Manga.find_by_permalink!(params[:id])
+    @manga = Manga.find(params[:id])
     @chapters = @manga.ordered_chapters.page(params[:page]).per 15
     
     ariane.add @manga.name, @manga
@@ -40,7 +39,7 @@ class MangasController < ApplicationController
 
   # GET /mangas/1/edit
   def edit
-    @manga = Manga.find_by_permalink!(params[:id])
+    @manga = Manga.find(params[:id])
 
     ariane.add @manga.name, manga_path(@manga)
     ariane.add 'Edit', edit_manga_path(@manga)
@@ -65,7 +64,7 @@ class MangasController < ApplicationController
   # PUT /mangas/1
   # PUT /mangas/1.json
   def update
-    @manga = Manga.find_by_permalink(params[:id])
+    @manga = Manga.find(params[:id])
 
     respond_to do |format|
       if @manga.update_attributes(params[:manga])
@@ -81,7 +80,7 @@ class MangasController < ApplicationController
   # DELETE /mangas/1
   # DELETE /mangas/1.json
   def destroy
-    @manga = Manga.find_by_permalink(params[:id])
+    @manga = Manga.find(params[:id])
     @manga.destroy
 
     respond_to do |format|

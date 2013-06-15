@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   prepend_before_filter :get_manga
   prepend_before_filter :get_chapter
 
-  after_filter :mark_page_as_read
+  after_filter :mark_page_as_read, :only => [:show]
 
   layout "reader", :only => [:show]
 
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
 
     ariane.add "Add Pages", '#'
 
-    gon.manga_id = @manga.permalink
+    gon.manga_id = @manga.slug
     gon.chapter_id = @chapter.number
 
     respond_to do |format|
@@ -103,7 +103,7 @@ class PagesController < ApplicationController
 
   private
   def get_manga
-    @manga = Manga.find_by_permalink!(params[:manga_id])
+    @manga = Manga.find(params[:manga_id])
   end
 
   def get_chapter

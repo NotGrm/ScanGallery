@@ -6,7 +6,8 @@
 				%b.caret
 			%ul.dropdown-menu
 				- @manga.ordered_chapters.each do |chapter|
-					%li= link_to chapter.number, manga_chapter_page_path(@manga, chapter, chapter.pages.first)
+					- if chapter.pages.first
+						%li= link_to chapter.number, manga_chapter_page_path(@manga, chapter, chapter.pages.first)
 		%li.dropdown 
 			%a.dropdown-toggle{"data-toggle" => "dropdown"}
 				Go to Page
@@ -15,12 +16,12 @@
 				- @chapter.ordered_pages.each do |p|
 					%li= link_to p.number, manga_chapter_page_path(@manga, @chapter, p)
 
-= render 'nav'
+= render 'nav', :page => @page
 
 %div
-	= link_to (@page.next_page ? manga_chapter_page_path(@manga, @chapter, @page.next_page) : '#'), :class => "thumbnail" do
+	= link_to (@page.next_page.nil? ? 'javascript:;' : manga_chapter_page_path(@manga, @chapter, @page.next_page)), :class => "thumbnail" do
 		= image_tag @page.image.url
 
-= render 'nav'
+= render 'nav', :page => @page
 
 	

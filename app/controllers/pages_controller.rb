@@ -20,7 +20,6 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-
     @page = @chapter.pages.find_by_number(params[:id])
 
     respond_to do |format|

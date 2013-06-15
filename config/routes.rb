@@ -9,10 +9,13 @@ ScanGallery::Application.routes.draw do
   resources :mangas do
     resources :chapters, :except => [:index] do
       resources :pages, :except => [:index]
+      
       member do
         get 'read'
         get 'unread'
       end
+
+      get 'page/:page', :action => :index, :on => :collection
     end
   end
 

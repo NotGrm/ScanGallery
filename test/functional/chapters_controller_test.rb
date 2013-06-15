@@ -3,7 +3,7 @@ require 'test_helper'
 class ChaptersControllerTest < ActionController::TestCase
   setup do
     @chapter = chapters(:one)
-    @manga = mangas(:one)
+    @manga = @chapter.manga
   end
 
   test "should get new" do
@@ -13,7 +13,7 @@ class ChaptersControllerTest < ActionController::TestCase
 
   test "should create chapter" do
     assert_difference('Chapter.count') do
-      post :create, chapter: { number: @chapter.number}, :manga_id => @manga.id
+      post :create, chapter: { number: 3}, :manga_id => @manga
     end
 
     assert_redirected_to new_manga_chapter_page_path(@manga, assigns(:chapter))

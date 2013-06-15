@@ -5,5 +5,10 @@ one:
   manga: :one
 
 two:
-  number: 1
+  number: 2
+  manga: :two
+
+with_id:
+  id: 2
+  number: 2
   manga: :two

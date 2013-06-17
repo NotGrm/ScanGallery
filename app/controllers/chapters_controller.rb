@@ -5,7 +5,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1
   # GET /chapters/1.json
   def show
-    @chapter = Chapter.find_by_number(params[:id])
+    @chapter = @manga.chapters.find_by_number(params[:id])
 
     ariane.add "#{@chapter.number}", @chapter
 
@@ -18,7 +18,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/read
   # GET /chapters/1/read.json
   def read
-    @chapter = Chapter.find_by_number(params[:id])
+    @chapter = @manga.chapters.find_by_number(params[:id])
 
     @chapter.pages.each{|page| page.mark_as_read}
 
@@ -31,7 +31,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/unread
   # GET /chapters/1/unread.json
   def unread
-    @chapter = Chapter.find_by_number(params[:id])
+    @chapter = @manga.chapters.find_by_number(params[:id])
 
     @chapter.pages.each{|page| page.mark_as_unread}
 
@@ -56,7 +56,7 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/1/edit
   def edit
-    @chapter = Chapter.find_by_number(params[:id])
+    @chapter = @manga.chapters.find_by_number(params[:id])
     
 
     ariane.add "#{@chapter.number}", manga_chapter_path(@manga, @chapter)
@@ -86,7 +86,7 @@ class ChaptersController < ApplicationController
   # PUT /chapters/1
   # PUT /chapters/1.json
   def update
-    @chapter = Chapter.find_by_number(params[:id])
+    @chapter = @manga.chapters.find_by_number(params[:id])
 
     respond_to do |format|
       if @chapter.update_attributes(params[:chapter])
@@ -104,7 +104,7 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1
   # DELETE /chapters/1.json
   def destroy
-    @chapter = Chapter.find_by_number(params[:id])
+    @chapter = @manga.chapters.find_by_number(params[:id])
     @chapter.destroy
 
     respond_to do |format|

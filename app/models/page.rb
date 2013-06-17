@@ -10,6 +10,8 @@ class Page < ActiveRecord::Base
   before_validation :set_number, :on => :create
   before_destroy :destroy_page_file
 
+  after_initialize :init, if: 'new_record?'
+
   def previous_page
   	Page.find_by_number_and_chapter_id(number - 1, chapter.id)
   end
@@ -41,14 +43,18 @@ class Page < ActiveRecord::Base
   end
 
   private
-    def set_number
-      previous = chapter.pages.order("number").last
+  def init
+    self.is_read = false
+  end
 
-      self.number = previous ? previous.number + 1 : 0
-    end
+  def set_number
+    previous = chapter.pages.order("number").last
 
-    def destroy_page_file
-      remove_image!
-    end
+    self.number = previous ? previous.number + 1 : 0
+  end
+
+  def destroy_page_file
+    remove_image!
+  end
 
 end

@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  prepend_before_filter :get_manga
-  prepend_before_filter :get_chapter
+  prepend_before_filter :get_manga_and_chapter
 
   after_filter :mark_page_as_read, :only => [:show]
 
@@ -101,12 +100,9 @@ class PagesController < ApplicationController
   end
 
   private
-  def get_manga
+  def get_manga_and_chapter
     @manga = Manga.find(params[:manga_id])
-  end
-
-  def get_chapter
-    @chapter = Chapter.find_by_number(params[:chapter_id])
+    @chapter = @manga.chapters.find_by_number(params[:chapter_id])
   end
 
   def set_ariane

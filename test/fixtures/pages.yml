@@ -6,3 +6,6 @@ without_number:
 with_number:
   number: 1
   chapter: one
+
+one:
+  number: 1

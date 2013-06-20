@@ -27,25 +27,4 @@ class PagesControllerTest < ActionController::TestCase
     get :show, id: page, manga_id: manga, chapter_id: chapter
     assert_response :success
   end
-
-  test "should get edit" do
-    @page = pages(:with_number)
-    get :edit, id: @page.number, :manga_id => @manga.id, :chapter_id => @chapter.id
-    assert_response :success
-  end
-
-  test "should update page" do
-    @page = pages(:with_number)
-    put :update, id: @page.number, page: { number: @page.number + 1, image: File.open(File.join(Rails.root.join('public/images/test.jpg'))) }, :manga_id => @manga.id, :chapter_id => @chapter.id
-    assert_redirected_to manga_chapter_path(@manga, @chapter)
-  end
-
-  test "should destroy page" do
-    @page = pages(:with_number)
-    assert_difference('Page.count', -1) do
-      delete :destroy, id: @page, :manga_id => @manga, :chapter_id => @chapter.number
-    end
-
-    assert_redirected_to manga_chapter_path(@manga, @chapter)
-  end
 end

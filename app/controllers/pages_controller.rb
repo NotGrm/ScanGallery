@@ -69,7 +69,8 @@ class PagesController < ApplicationController
   end
 
   def mark_page_as_read
-    @page.mark_as_read
+    @page.is_read = true
+    @page.save
   end
 
 end

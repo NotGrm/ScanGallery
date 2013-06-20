@@ -16,6 +16,6 @@ class Manga < ActiveRecord::Base
   end
 
   def unread_chapters_number
-    chapters.to_a.count{|chapter|chapter.is_read?}
+    chapters.to_a.count{|chapter|!chapter.is_read?}
   end
 end

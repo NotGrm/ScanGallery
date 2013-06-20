@@ -20,11 +20,14 @@ class ChaptersController < ApplicationController
   def read
     @chapter = @manga.chapters.find_by_number(params[:id])
 
-    @chapter.pages.each{|page| page.mark_as_read}
+    @chapter.pages.each{|page| page.is_read = true}
 
     respond_to do |format|
-      format.html { redirect_to manga_chapter_path(@manga, @chapter)}
-      format.json { render json: @chapter }
+      if @chapter.save
+        format.html { redirect_to request.referer }
+        format.json { render json: @chapter }
+      else
+      end
     end
   end
 
@@ -33,11 +36,13 @@ class ChaptersController < ApplicationController
   def unread
     @chapter = @manga.chapters.find_by_number(params[:id])
 
-    @chapter.pages.each{|page| page.mark_as_unread}
+    @chapter.pages.each{|page| page.is_read = false}
 
     respond_to do |format|
-      format.html { redirect_to manga_chapter_path(@manga, @chapter)}
-      format.json { render json: @chapter }
+      if @chapter.save
+        format.html { redirect_to request.referer }
+        format.json { render json: @chapter }
+      end
     end
   end
 

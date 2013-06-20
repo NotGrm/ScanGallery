@@ -1,3 +1,15 @@
 // Place all the styles related to the Mangas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+tr {
+  a.muted {
+    display: none;
+  }
+  &:hover {
+    a.muted {
+      display: inline;
+      text-decoration: none;
+    }
+  }
+}

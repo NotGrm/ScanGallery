@@ -3,14 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-ul.thumbnails li.span4:nth-child(3n + 4) {
-  margin-left : 0px;
-}
+ul.thumbnails li.span2 {
 
-ul.thumbnails li.span3:nth-child(4n + 5) {
-  margin-left : 0px;
-}
+  padding-bottom: 20px;
 
-ul.thumbnails li.span12 + li {
-  margin-left : 0px;
+  a {
+      height: 183px;
+  }
+
+  &:nth-child(6n + 1) {
+    margin-left : 0px;
+  }
+
+  .actions{
+    display: none;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    padding-bottom: 0px;
+    .actions {
+      display: inline;
+    }
+  }
 }

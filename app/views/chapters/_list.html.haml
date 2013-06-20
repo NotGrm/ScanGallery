@@ -1,21 +1,36 @@
 %table.table.table-hover.table-bordered
   %thead
     %tr
-      %th.span1 #
+      %th.span2 #
       %th Team
       %th.span3 Progression
       %th.span2 Action
   %tbody
     - chapters.each do |chapter|
       %tr{:class => "#{chapter.pages.count > 0 ? "" : "error" }"}
-        %td= link_to chapter.number, [@manga, chapter]
+        %td
+          = link_to chapter.number, [@manga, chapter]
+          
+          .pull-right
+            - if chapter.is_read?
+              = link_to unread_manga_chapter_path(@manga, chapter), :class => "muted" do
+                %i.icon-eye-close
+            - else
+              = link_to read_manga_chapter_path(@manga, chapter), :class => "muted" do
+                %i.icon-eye-open
+
+            = link_to edit_manga_chapter_path(@manga, chapter), :class => "muted" do
+              %i.icon-pencil
+            = link_to [@manga, chapter], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
+              %i.icon-remove
+
         %td= chapter.team
         %td
-          .progress
+          .progress.progress-info
             - if chapter.pages.count > 0
               .bar{:style => "width: #{chapter.read_percent}%;"}
         %td
-          = link_to [@manga, chapter], class: "btn btn-mini" do
+          = link_to [@manga, chapter] do
             Go
             %i.icon-chevron-right
     

@@ -1,30 +1,37 @@
 .page-header
-	.btn-toolbar.pull-right
-		.btn-group
-			= link_to 'Add Page', new_manga_chapter_page_path(@manga, @chapter), :class => "btn btn-primary"
+  .btn-toolbar.pull-right
+    .btn-group
+      = link_to 'Add Page', new_manga_chapter_page_path(@manga, @chapter), :class => "btn btn-primary"
 
-		.btn-group
-			= link_to read_manga_chapter_path(@manga, @chapter), :class => "btn" do
-				%i.icon-eye-open
-			= link_to unread_manga_chapter_path(@manga, @chapter), :class => "btn" do
-				%i.icon-eye-close
+    .btn-group
+      - if @chapter.is_read?
+        = link_to unread_manga_chapter_path(@manga, @chapter), :class => "btn" do
+          %i.icon-eye-close
+      - else
+        = link_to read_manga_chapter_path(@manga, @chapter), :class => "btn" do
+          %i.icon-eye-open
 
-		.btn-group
-			= link_to edit_manga_chapter_path(@manga, @chapter), :class => "btn" do
-				%i.icon-pencil
-			= link_to [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete, :class => "btn" do
-				%i.icon-trash
-			
-	%h1
-		= @chapter.full_name
-		- if @chapter.team
-			%small
-				by
-				= @chapter.team
+    .btn-group
+      = link_to edit_manga_chapter_path(@manga, @chapter), :class => "btn" do
+        %i.icon-pencil
+      = link_to [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete, :class => "btn" do
+        %i.icon-trash
+      
+  %h1
+    = @chapter.full_name
+    - if @chapter.team
+      %small
+        by
+        = @chapter.team
 
 = ariane.render
 
 %ul.thumbnails
-	- @chapter.ordered_pages.each do |page|
-		%li.span3
-			= link_to image_tag(page.image.thumb.url), manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail" 
+  - @chapter.ordered_pages.each do |page|
+    %li.span2
+      = link_to manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail text-info" do
+        = image_tag(page.image.thumb.url)
+      .actions
+        = "#{page.number} -"
+        = link_to [@manga, @chapter, page], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
+          %i.icon-trash

@@ -8,7 +8,7 @@ ScanGallery::Application.routes.draw do
 
   resources :mangas do
     resources :chapters, :except => [:index] do
-      resources :pages, :except => [:index]
+      resources :pages, :except => [:index, :edit, :update]
       
       member do
         get 'read'

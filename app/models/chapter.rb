@@ -1,6 +1,6 @@
 class Chapter < ActiveRecord::Base
   belongs_to :manga
-  has_many :pages, :dependent => :destroy
+  has_many :pages, :dependent => :destroy, :autosave => true
 
   attr_accessible :number, :team
 
@@ -8,7 +8,7 @@ class Chapter < ActiveRecord::Base
   validate :number_cannot_be_duplicated
 
   def is_read?
-    pages.to_a.count{|page|!page.is_read} > 0
+    pages.to_a.count{|page|page.is_read} == pages.size
   end
 
   def read_percent

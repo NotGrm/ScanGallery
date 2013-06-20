@@ -32,16 +32,6 @@ class Page < ActiveRecord::Base
     "#{number}"
   end
 
-  def mark_as_read
-    self.is_read = true
-    self.save
-  end
-
-  def mark_as_unread
-    self.is_read = false
-    self.save
-  end
-
   private
   def init
     self.is_read = false

@@ -1,5 +1,7 @@
 !$ ->
   
+  $("#readButton").hide()
+
   # Setup html5 version
   $("#html5_uploader").pluploadQueue
     
@@ -12,3 +14,10 @@
     max_file_size: "10mb"
     chunk_size: "1mb"
     unique_names: true
+
+  uploader = $("#html5_uploader").pluploadQueue()
+
+  uploader.bind "UploadComplete", (up, files) ->
+    $("#readButton").show()
+
+  uploader.init()

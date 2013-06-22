@@ -52,6 +52,14 @@ class MangasController < ApplicationController
 
     respond_to do |format|
       if @manga.save
+
+        if params[:chapters_number]
+          (1..params[:chapters_number].to_i).each do |i|
+            @manga.chapters.build(:number => i)
+          end
+          @manga.save
+        end
+
         format.html { redirect_to @manga, notice: 'Manga was successfully created.' }
         format.json { render json: @manga, status: :created, location: @manga }
       else

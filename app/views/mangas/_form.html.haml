@@ -1,9 +1,15 @@
 = simple_form_for(@manga) do |f|
 
-	%legend Base information  
+  %legend Base information  
 
-	.form-inputs
-		= f.input :name
+  .form-inputs
+    = f.input :name
 
-	.form-actions
-		= f.button :submit, :class => "btn-primary"
+  .form-inputs
+    .control-group
+      = label_tag :chapters_number, "Number of chapters", :class => "control-label"
+      .controls
+        = text_field_tag :chapters_number,  params[:chapters_number]
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"

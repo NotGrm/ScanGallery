@@ -4,6 +4,7 @@ class Manga < ActiveRecord::Base
   has_many :chapters
 
   validates :name, :presence => true
+  validates_associated :chapters
 
   friendly_id :name, use: :slugged
 

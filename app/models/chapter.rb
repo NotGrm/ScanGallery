@@ -40,10 +40,8 @@ class Chapter < ActiveRecord::Base
 
   private
   def number_cannot_be_duplicated
-    manga.chapters.each do |chapter|
-      if chapter.number == self.number && chapter != self
-        errors.add(:number, "can't be duplicated")
-      end
+    if manga.chapters.detect {|chapter| chapter.number == self.number && chapter != self}
+      errors.add(:number, "can't be duplicated")
     end
   end
 end

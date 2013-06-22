@@ -49,7 +49,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    @chapter = @manga.chapters.build
+    @chapter = @manga.chapters.build(:number => params[:number])
 
     ariane.add 'New chapter', new_manga_chapter_path(@manga)
 

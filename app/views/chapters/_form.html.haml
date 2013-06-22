@@ -4,7 +4,7 @@
 	.row-fluid
 		.span6
 			.form-inputs
-				= f.input :number, input_html: {class: "input-block-level"}
+				= f.input :number, input_html: {class: "input-block-level", :autofocus => "autofocus", :autocomplete => "off"}
 		.span6
 			.form-inputs
 				= f.input :team, input_html: {class: "input-block-level", data: {provide: "typeahead", source: @teams.compact}, autocomplete: "off"}

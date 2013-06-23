@@ -1,6 +1,19 @@
-!$ ->
-  
-  $("#readButton").hide()
+$ ->
+  window.ChangePage = (page, loc) ->
+    window.location.href=page
+
+  @ChangeChapter = ->
+    chapter = $("#cmbchapters :selected").val() 
+    url = "../../" + chapter + "/pages/1"
+    window.location.href=url
+
+  $(document).keydown (e) =>
+    switch e.keyCode
+      when 37 then ChangePage $("#cmbpages :selected").prev().val(), 1
+      when 39 then ChangePage $("#cmbpages :selected").next().val(), 1
+
+  if $("#readButton").length > 0
+    $("#readButton").hide()
 
   # Setup html5 version
   $("#html5_uploader").pluploadQueue
@@ -21,3 +34,5 @@
     $("#readButton").show()
 
   uploader.init()
+
+

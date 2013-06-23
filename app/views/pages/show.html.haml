@@ -1,27 +1,17 @@
-- content_for :navmenu do
-	%ul.nav
-		%li.dropdown 
-			%a.dropdown-toggle{"data-toggle" => "dropdown"}
-				Go to Chapter
-				%b.caret
-			%ul.dropdown-menu
-				- @manga.ordered_chapters.each do |chapter|
-					- if chapter.pages.first
-						%li= link_to chapter.number, manga_chapter_page_path(@manga, chapter, chapter.pages.first)
-		%li.dropdown 
-			%a.dropdown-toggle{"data-toggle" => "dropdown"}
-				Go to Page
-				%b.caret
-			%ul.dropdown-menu
-				- @chapter.ordered_pages.each do |p|
-					%li= link_to p.number, manga_chapter_page_path(@manga, @chapter, p)
+.row-fluid
+  .span6
+    %form.form-inline
+      = select_tag :pages, options_for_select(@manga.ordered_chapters.map {|chapter| ["#{@manga.name} - #{chapter.number}", chapter.number]}, :selected => @chapter.number), :id => "cmbchapters", :onchange => "ChangeChapter()"
+  .span6
+    %form.form-inline.pull-right
+      = link_to raw('&larr; Previous'), "javascript:ChangePage($('#cmbpages :selected').prev().val(),1)", :class => "btn"
 
-= render 'nav', :page => @page
+      %label Page
+      = select_tag :pages, options_for_select(@chapter.ordered_pages.map {|page| [page.number, page.number]}, :selected => @page.number), :id => "cmbpages", :class => "input-mini", :onchange => "ChangePage($('#cmbpages :selected').val(),0)"
 
-%div
-	= link_to (@page.next_page.nil? ? 'javascript:;' : manga_chapter_page_path(@manga, @chapter, @page.next_page)), :class => "thumbnail" do
-		= image_tag @page.image.url
+      = link_to raw('Next &rarr;'), "javascript:ChangePage($('#cmbpages :selected').next().val(),1)", :class => "btn"
 
-= render 'nav', :page => @page
-
-	
+.row-fluid
+  .span12
+    = link_to "javascript:ChangePage($('#cmbpages :selected').next().val(),1)", :class => "thumbnail" do
+      = image_tag @page.image.url

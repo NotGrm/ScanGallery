@@ -1,8 +1,0 @@
-%div
-  %ul.pager
-    %li.previous{:class => ("disabled" unless page.previous_page)}
-      
-      = link_to raw('&larr; Previous'), (page.previous_page.nil? ? 'javascript:;' : manga_chapter_page_path(@manga, @chapter, page.previous_page))
-
-    %li.next{:class => ("disabled" unless page.next_page)}
-      = link_to raw('Next &rarr;'), (page.next_page.nil? ? 'javascript:;' : manga_chapter_page_path(@manga, @chapter, page.next_page))

@@ -16,7 +16,7 @@ $ ->
     $("#readButton").hide()
 
   # Setup html5 version
-  $("#html5_uploader").pluploadQueue
+  uploader = $("#html5_uploader").pluploadQueue
     
     # General settings
     runtimes: "html5"
@@ -28,7 +28,7 @@ $ ->
     chunk_size: "1mb"
     unique_names: true
 
-  uploader = $("#html5_uploader").pluploadQueue()
+   # $("#html5_uploader").pluploadQueue()
 
   uploader.bind "UploadComplete", (up, files) ->
     $("#readButton").show()

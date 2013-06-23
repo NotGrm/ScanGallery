@@ -1,7 +1,7 @@
 class Manga < ActiveRecord::Base
   extend FriendlyId
   attr_accessible :name
-  has_many :chapters
+  has_many :chapters, :dependent => :destroy
 
   validates :name, :presence => true
   validates_associated :chapters

@@ -13,6 +13,7 @@ ScanGallery::Application.routes.draw do
       member do
         get 'read'
         get 'unread'
+        get 'add_next'
       end
 
       get 'page/:page', :action => :index, :on => :collection

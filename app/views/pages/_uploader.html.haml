@@ -2,5 +2,5 @@
 
 .form-actions
   = link_to "Back", manga_path(@manga), class: "btn"
-  = link_to "Add next chapter", new_manga_chapter_path(@manga, :number => @chapter.number + 1), class: "btn btn-primary"
+  = link_to "Add next chapter", add_next_manga_chapter_path(@manga, @chapter, :number => @chapter.number + 1), class: "btn btn-primary"
   = link_to "Read chapter", manga_chapter_page_path(@manga, @chapter, @chapter.pages.first), class: "btn btn-success", :id => "readButton"

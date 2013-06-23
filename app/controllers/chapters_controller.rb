@@ -15,6 +15,19 @@ class ChaptersController < ApplicationController
     end
   end
 
+  def add_next
+    chapter = @manga.chapters.find_by_number(params[:number])
+
+    respond_to do |format|
+      if chapter
+        flash[:warning] = "Chapter already have pages" if chapter.pages.size > 0
+        format.html{ redirect_to new_manga_chapter_page_path(@manga, chapter)}
+      else
+        format.html{ redirect_to new_manga_chapter_path(@manga) }
+      end
+    end
+  end
+
   # GET /chapters/1/read
   # GET /chapters/1/read.json
   def read

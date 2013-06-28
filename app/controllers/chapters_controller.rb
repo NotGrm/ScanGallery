@@ -20,10 +20,9 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if chapter
-        flash[:warning] = "Chapter already have pages" if chapter.pages.size > 0
         format.html{ redirect_to new_manga_chapter_page_path(@manga, chapter)}
       else
-        format.html{ redirect_to new_manga_chapter_path(@manga) }
+        format.html{ redirect_to new_manga_chapter_path(@manga, :number => params[:number]) }
       end
     end
   end
@@ -67,6 +66,7 @@ class ChaptersController < ApplicationController
     ariane.add 'New chapter', new_manga_chapter_path(@manga)
 
     respond_to do |format|
+      flash[:warning] = "Chapter already have pages" if @chapter.pages.size > 0
       format.html # new.html.erb
       format.json { render json: @chapter }
     end

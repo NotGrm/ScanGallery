@@ -17,3 +17,15 @@ tr {
     margin-bottom: 5px;
   }
 }
+
+.thumbnail{
+
+  margin-bottom: 10px;
+
+  h3{
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis; /* pour Opera 9 */
+    text-overflow: ellipsis;
+  }
+}

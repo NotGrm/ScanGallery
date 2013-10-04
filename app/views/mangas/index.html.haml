@@ -4,6 +4,17 @@
     %small
       = link_to 'Add new', new_manga_path, :class => "btn btn-primary btn-sm"
 
+.row
+  - @mangas.each do |manga|
+    .col-md-3
+      .thumbnail
+        = image_tag "http://placehold.it/200x150"
+        .caption
+          %h3= link_to manga.name, manga
+          %p
+            = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default"
+            = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
+
 .span8
   %table.table
     %thead

@@ -1,31 +1,38 @@
 .page-header
+  .btn-group.pull-right
+    = link_to mangas_path(display: "grid"), class: "btn btn-default" do
+      %span.glyphicon.glyphicon-th
+    = link_to mangas_path(display: "list"), class: "btn btn-default" do
+      %span.glyphicon.glyphicon-th-list
   %h1 
     Listing mangas
     %small
       = link_to 'Add new', new_manga_path, :class => "btn btn-primary btn-sm"
 
 .row
-  - @mangas.each do |manga|
-    .col-md-3
-      .thumbnail
-        = image_tag "http://placehold.it/200x150"
-        .caption
-          %h3= link_to manga.name, manga
-          %p
-            = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default"
-            = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
-
-.span8
-  %table.table
-    %thead
-      %tr
-        %th Name
-        %th
-    %tbody
-      - @mangas.each do |manga|
-        %tr
-          %td= link_to manga.name, manga
-          %td
-            .btn-group
-              = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default btn-sm"
-              = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-sm"
+  - if params[:display] == "list"
+    .span8
+      %table.table
+        %thead
+          %tr
+            %th Name
+            %th
+        %tbody
+          - @mangas.each do |manga|
+            %tr
+              %td= link_to manga.name, manga
+              %td
+                .btn-group
+                  = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default btn-sm"
+                  = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-sm"
+  - else
+    - @mangas.each do |manga|
+      .col-md-3
+        .thumbnail
+          = image_tag "http://placehold.it/200x150"
+          .caption
+            %h3= link_to manga.name, manga
+            %p
+              = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default"
+              = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
+    

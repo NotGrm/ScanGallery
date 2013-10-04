@@ -5,17 +5,17 @@
 
     .btn-group
       - if @chapter.is_read?
-        = link_to unread_manga_chapter_path(@manga, @chapter), :class => "btn" do
-          %i.icon-eye-close
+        = link_to unread_manga_chapter_path(@manga, @chapter), :class => "btn btn-default" do
+          %span.glyphicon.glyphicon-eye-close
       - else
-        = link_to read_manga_chapter_path(@manga, @chapter), :class => "btn" do
-          %i.icon-eye-open
+        = link_to read_manga_chapter_path(@manga, @chapter), :class => "btn btn-default" do
+          %span.glyphicon.glyphicon-eye-open
 
     .btn-group
-      = link_to edit_manga_chapter_path(@manga, @chapter), :class => "btn" do
-        %i.icon-pencil
-      = link_to [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete, :class => "btn" do
-        %i.icon-trash
+      = link_to edit_manga_chapter_path(@manga, @chapter), :class => "btn btn-default" do
+        %span.glyphicon.glyphicon-pencil
+      = link_to [@manga, @chapter], :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default" do
+        %span.glyphicon.glyphicon-trash
       
   %h1
     = @chapter.full_name
@@ -26,12 +26,23 @@
 
 = ariane.render
 
-%ul.thumbnails
-  - @chapter.ordered_pages.each do |page|
-    %li.span2
-      = link_to manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail text-info" do
-        = image_tag(page.image.thumb.url)
-      .actions
-        = "#{page.number} -"
-        = link_to [@manga, @chapter, page], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
-          %i.icon-trash
+%section#pages
+  .row
+    - @chapter.ordered_pages.each do |page|
+      .col-md-2
+        = link_to manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail text-info" do
+          = image_tag(page.image.thumb.url)
+        .actions
+          = "#{page.number} -"
+          = link_to [@manga, @chapter, page], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
+            %span.glyphicon.glyphicon-trash
+
+/ %ul.thumbnails
+/   - @chapter.ordered_pages.each do |page|
+/     %li.col-md-2
+/       = link_to manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail text-info" do
+/         = image_tag(page.image.thumb.url)
+/       .actions
+/         = "#{page.number} -"
+/         = link_to [@manga, @chapter, page], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
+/           %i.icon-trash

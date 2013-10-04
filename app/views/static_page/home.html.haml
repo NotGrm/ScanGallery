@@ -1,17 +1,16 @@
-.row-fluid
-	.span6
+.row
+	.col-md-6
 		%h2 Latest Manga
 		%hr
-		%ul.nav.nav-tabs.nav-stacked
+		%ul.list-group
 			- Manga.last_ten_manga.each do |manga|
-				%li= link_to manga.name, manga_path(manga)
+				%li.list-group-item= link_to manga.name, manga_path(manga)
 		
-	.span6
+	.col-md-6
 		%h2 Latest Chapter
 		%hr
-		%ul.nav.nav-tabs.nav-stacked
+		%ul.list-group
 			- Chapter.last_ten_chapter.each do |chapter|
-				- if chapter.manga
-					%li= link_to chapter.full_name, manga_chapter_path(chapter.manga, chapter)
+				%li.list-group-item= link_to chapter.full_name, manga_chapter_path(chapter.manga, chapter)
 
 

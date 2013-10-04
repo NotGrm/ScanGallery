@@ -3,35 +3,43 @@
 	%head
 		%title ScanGallery
 		= stylesheet_link_tag    "application", :media => "all"
+		= stylesheet_link_tag    "bootstrap", :media => "screen"
+		= stylesheet_link_tag    "bootstrap-extra", :media => "screen"
 		= stylesheet_link_tag    "jquery.plupload.queue", :media => "all"
 		
-		= include_gon
-		= javascript_include_tag "application"
-		= javascript_include_tag "plupload"
-		= javascript_include_tag "plupload.full"
-		= javascript_include_tag "jquery.plupload.queue"
+		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+
 		= csrf_meta_tags
 
 	%body
 		= render 'shared/navbar'
 
-		.container-fluid
-			.row-fluid
-				.span3
-					.well{:style => "max-width: 340px; padding: 8px 0;"}
-						%ul.nav.nav-list
-							%li.nav-header General
-							%li{:class => current_page?(root_path) ? "active" : ""}= link_to "Home", root_path
-							%li{:class => current_page?(new_manga_path) ? "active" : ""}= link_to 'Add Manga', new_manga_path
+		.container
+			.row
+				.col-md-3
+					.panel.panel-default
+						.panel-heading General
+						%ul.list-group
+							%li.list-group-item= link_to "Home", root_path, class: "active"
+							%li.list-group-item= link_to 'Add Manga', new_manga_path
 
-							%li.nav-header Manga List
-							- Manga.order(:name).each do |manga|
-								%li{:class => @manga && @manga.id == manga.id ? "active" : ""}
-									= link_to manga_path(manga) do 
-										= manga.name
-										- if manga.unread_chapters_number > 0
-											%span.badge.badge-info.pull-right= manga.unread_chapters_number
+					.panel.panel-default
+						.panel-heading Manga List
+						- Manga.order(:name).each do |manga|
+							%li.list-group-item
+								= link_to manga_path(manga) do 
+									= manga.name
+									- if manga.unread_chapters_number > 0
+										%span.badge.pull-right= manga.unread_chapters_number
 
-				.span9
+				.col-md-9
 					= render 'layouts/messages'
 					= yield
+
+
+	= include_gon
+	= javascript_include_tag "application"
+	= javascript_include_tag "bootstrap"
+	= javascript_include_tag "plupload"
+	= javascript_include_tag "plupload.full"
+	= javascript_include_tag "jquery.plupload.queue"

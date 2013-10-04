@@ -1,37 +1,38 @@
 %table.table.table-hover.table-bordered
   %thead
     %tr
-      %th.span2 #
+      %th.col-md-2 #
       %th Team
-      %th.span3 Progression
-      %th.span2 Action
+      %th.col-md-3 Progression
+      %th.col-md-2 Action
   %tbody
     - chapters.each do |chapter|
-      %tr{:class => "#{chapter.pages.count > 0 ? "" : "error" }"}
+      %tr{:class => "#{chapter.pages.count > 0 ? "" : "danger" }"}
         %td
           = link_to chapter.number, [@manga, chapter]
           
           .pull-right
             - if chapter.is_read?
               = link_to unread_manga_chapter_path(@manga, chapter), :class => "muted" do
-                %i.icon-eye-close
+                %span.glyphicon.glyphicon-eye-close
             - else
               = link_to read_manga_chapter_path(@manga, chapter), :class => "muted" do
-                %i.icon-eye-open
+                %span.glyphicon.glyphicon-eye-open
 
             = link_to edit_manga_chapter_path(@manga, chapter), :class => "muted" do
-              %i.icon-pencil
+              %span.glyphicon.glyphicon-pencil
             = link_to [@manga, chapter], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
-              %i.icon-remove
+              %span.glyphicon.glyphicon-remove
 
         %td= chapter.team
         %td
-          .progress.progress-info
+          .progress
             - if chapter.pages.count > 0
-              .bar{:style => "width: #{chapter.read_percent}%;"}
+              .progress-bar.progress-bar-info{role: "progressbar", style: "width: #{chapter.read_percent}%", aria: {valuenow: "#{chapter.read_percent}", valuemin: "0", valuemax: "100"}} 
+                %span.sr-only= "#{chapter.read_percent}% Complete (info)" 
         %td
           = link_to [@manga, chapter] do
             Go
-            %i.icon-chevron-right
+            %span.glyphicon.glyphicon-chevron-right
     
   

@@ -2,35 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-ul.thumbnails li.span2 {
-
-  padding-bottom: 20px;
-
-  a {
-      height: 183px;
-  }
-
-  &:nth-child(6n + 1) {
-    margin-left : 0px;
-  }
-
-  .actions{
-    display: none;
-
-    a {
-      text-decoration: none;
-    }
-  }
-
-  &:hover {
-    padding-bottom: 0px;
-    .actions {
-      display: inline;
-    }
-  }
-}
-
 .plupload_header {
   display: none;
 }

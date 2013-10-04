@@ -5,3 +5,24 @@
 .progress {
   margin-bottom: 0px;
 }
+
+#pages{
+  .col-md-2{
+    height:200px;
+
+    .actions{
+      display: none;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    &:hover {
+      padding-bottom: 0px;
+      .actions {
+        display: inline;
+      }
+    }
+  }
+}

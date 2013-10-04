@@ -30,7 +30,6 @@ group :production do
 end
 
 gem 'ariane'
-gem "twitter-bootstrap-rails"
 gem 'rmagick', '2.13.2'
 gem 'carrierwave'
 gem 'gon'

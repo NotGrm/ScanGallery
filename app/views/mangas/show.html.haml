@@ -1,19 +1,18 @@
 .page-header
-	.btn-toolbar.pull-right
-		.btn-group
-			= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary"
-
-		.btn-group
-			= link_to edit_manga_path(@manga), :class => "btn" do
-				%i.icon-pencil
-			= link_to @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn" do
-				%i.icon-trash
+	.btn-group.pull-right
+		= link_to edit_manga_path(@manga), :class => "btn btn-default" do
+			%span.glyphicon.glyphicon-pencil
+		= link_to @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default" do
+			%span.glyphicon.glyphicon-trash
 
 	%h1= @manga.name
 
 = ariane.render
 
-%div
+%section
+	.btn-group.pull-right
+		= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary"
+
 	%h2 Chapter List
 
 	= render :partial => "chapters/list", :locals => { :chapters => @chapters }

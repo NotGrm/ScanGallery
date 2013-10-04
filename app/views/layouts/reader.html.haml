@@ -3,15 +3,18 @@
 	%head
 		%title ScanGallery
 		= stylesheet_link_tag    "application", :media => "all"
+		= stylesheet_link_tag    "bootstrap", :media => "screen"
+		= stylesheet_link_tag    "bootstrap-extra", :media => "screen"
 		
-		= javascript_include_tag "application"
 		= csrf_meta_tags
 		%meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
 
 	%body
 		= render 'shared/navbar'
 
-		.container-fluid
-			.row-fluid
-				.span10.offset1
+		.container
+			.row
+				.col-md-10.col-md-offset-1
 					= yield
+
+	= javascript_include_tag "application"

@@ -12,11 +12,12 @@
 .row
   - if params[:display] == "list"
     .span8
-      %table.table
+      %table.table.table-hover.table-bordered
         %thead
           %tr
             %th Name
             %th
+            %th.col-md-2 Action
         %tbody
           - @mangas.each do |manga|
             %tr
@@ -25,6 +26,10 @@
                 .btn-group
                   = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default btn-sm"
                   = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-sm"
+              %td
+                = link_to manga do
+                  Go
+                  %span.glyphicon.glyphicon-chevron-right
   - else
     - @mangas.each do |manga|
       .col-md-3

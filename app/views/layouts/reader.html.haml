@@ -1,20 +1,47 @@
 !!! 5
 %html
-	%head
-		%title ScanGallery
-		= stylesheet_link_tag    "application", :media => "all"
-		= stylesheet_link_tag    "bootstrap", :media => "screen"
-		= stylesheet_link_tag    "bootstrap-extra", :media => "screen"
-		
-		= csrf_meta_tags
-		%meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+  %head
+    %title ScanGallery
+    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag    "bootstrap", :media => "screen"
+    = stylesheet_link_tag    "bootstrap-extra", :media => "screen"
+    
+    = csrf_meta_tags
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
 
-	%body
-		= render 'shared/navbar'
+  %body
+    = render 'shared/navbar'
 
-		.container
-			.row
-				.col-md-10.col-md-offset-1
-					= yield
+    .reader-nav
+      .controls
+        .btn-group
+          %button.btn.btn-default.dropdown-toggle{data: {toggle: "dropdown"}}
+            %span= @chapter.fullname
+            %span.caret
+          %ul.dropdown-menu{role: "menu"}
+            - @manga.ordered_chapters.each do |chapter|
+              %li= link_to chapter.fullname, manga_chapter_page_path(@manga, chapter, 1)
+      
+        .btn-group
+          %button.btn.btn-primary.dropdown-toggle{data:{toggle: "dropdown"}}
+            %span= @page.number
+            %span.caret
+          %ul.dropdown-menu{role: "menu"}
+            - @chapter.ordered_pages.each do |page|
+              %li= link_to page.number, manga_chapter_page_path(@manga, @chapter, page.number)
 
-	= javascript_include_tag "application"
+      %ul.pager
+        %li.previous= link_to raw('&larr; Previous'), "javascript:ChangePage($('#cmbpages :selected').prev().val(),1)", :class => "btn btn-default"
+
+        %li.next= link_to raw('Next &rarr;'), "javascript:ChangePage($('#cmbpages :selected').next().val(),1)", :class => "btn btn-default pull-right"
+    .container
+      .row
+        .col-md-10.col-md-offset-1
+          = yield
+
+  = javascript_include_tag "application"
+  = javascript_include_tag "bootstrap"
+  
+  :coffee
+    $ ->
+      initReader()

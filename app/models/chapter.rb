@@ -38,6 +38,10 @@ class Chapter < ActiveRecord::Base
     pages.order("number #{order}")
   end
 
+  def fullname
+    "#{manga.name} - #{self.number}"
+  end
+
   private
   def number_cannot_be_duplicated
     if manga.chapters.detect {|chapter| chapter.number == self.number && chapter != self}

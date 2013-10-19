@@ -1,6 +1,20 @@
 $ ->
+  window.initReader = ->
+    width = $(".controls").width()
+    $(".controls").attr "style", "margin-left:-" + (width / 2) + "px"
   window.ChangePage = (page, loc) ->
     window.location.href=page
+
+  $(document).scroll ->
+    elem = $(".reader-nav")
+    unless elem.attr("data-top")
+      return  if elem.hasClass("navbar-fixed-top")
+      offset = elem.offset()
+      elem.attr "data-top", offset.top
+    if elem.attr("data-top") - elem.outerHeight() <= $(this).scrollTop() - $(elem).outerHeight()
+      elem.addClass "navbar-fixed-top"
+    else
+      elem.removeClass "navbar-fixed-top"
 
   @ChangeChapter = ->
     chapter = $("#cmbchapters :selected").val() 

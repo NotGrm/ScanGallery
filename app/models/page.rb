@@ -13,11 +13,21 @@ class Page < ActiveRecord::Base
   after_initialize :init, if: 'new_record?'
 
   def previous_page
-  	Page.find_by_number_and_chapter_id(number - 1, chapter.id)
+    if chapter.pages.first == self
+      previous_chapter = Chapter.find_by_number(chapter.number - 1)
+      previous_chapter.pages.last
+    else
+      Page.find_by_number_and_chapter_id(number - 1, chapter.id)
+    end
   end
 
   def next_page
-  	Page.find_by_number_and_chapter_id(number + 1, chapter.id)
+    if chapter.pages.last == self
+      next_chapter = Chapter.find_by_number(chapter.number + 1)
+      next_chapter.pages.first
+    else
+      Page.find_by_number_and_chapter_id(number + 1, chapter.id)
+    end
   end
 
   def manga_name

@@ -1,4 +1,4 @@
 .row
   .col-md-12
-    = link_to "javascript:ChangePage($('#cmbpages :selected').next().val(),1)", :class => "thumbnail" do
+    = link_to next_page_path, :class => "thumbnail" do
       = image_tag @page.image.url

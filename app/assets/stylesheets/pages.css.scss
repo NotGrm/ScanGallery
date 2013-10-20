@@ -10,6 +10,12 @@
   height: 300px !important;
 }
 
+.plupload_filelist_footer,  {
+  -webkit-box-sizing: none;
+  -moz-box-sizing: none;
+  box-sizing: none;
+}
+
 .reader-nav {
   margin-top: -20px;
   background-color: #f1f1f1;

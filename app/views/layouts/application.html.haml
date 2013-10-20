@@ -2,9 +2,9 @@
 %html
 	%head
 		%title ScanGallery
-		= stylesheet_link_tag    "application", :media => "all"
 		= stylesheet_link_tag    "bootstrap", :media => "screen"
 		= stylesheet_link_tag    "jquery.plupload.queue", :media => "all"
+		= stylesheet_link_tag    "application", :media => "all"
 		
 		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
 
@@ -42,3 +42,5 @@
 	= javascript_include_tag "plupload"
 	= javascript_include_tag "plupload.full"
 	= javascript_include_tag "jquery.plupload.queue"
+
+	= yield :scripts

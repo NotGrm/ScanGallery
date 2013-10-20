@@ -1,15 +1,15 @@
-= simple_form_for(@manga) do |f|
+= simple_form_for @manga, defaults: { input_html: { class: 'form-control' } }, input_html: {class: "form-horizontal"} do |f|
 
-  %legend Base information  
+  .form-group
+    = f.label :name, class: "col-md-3"
+    .col-md-9
+      = f.input_field :name, :autofocus => "autofocus", :autocomplete => "off"
 
-  .form-inputs
-    = f.input :name
+  .form-group
+    = label_tag :chapters_number, "Number of chapters", class: "col-md-3 control-label"
+    .col-md-9
+      = text_field_tag :chapters_number,  params[:chapters_number], class: "form-control"
 
-  .form-inputs
-    .control-group
-      = label_tag :chapters_number, "Number of chapters", :class => "control-label"
-      .controls
-        = text_field_tag :chapters_number,  params[:chapters_number]
-
-  .form-actions
-    = f.button :submit, :class => "btn-primary"
+  .form-group
+    .col-lg-offset-3.col-lg-9
+      = f.button :submit, :class => "btn-primary"

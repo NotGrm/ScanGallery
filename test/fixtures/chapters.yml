@@ -12,3 +12,8 @@ with_id:
   id: 2
   number: 2
   manga: :two
+
+naruto_one:
+  id: 3
+  number: 1
+  manga: :naruto

@@ -6,3 +6,7 @@ one:
 
 two:
   name: MyString
+
+naruto:
+  name: naruto
+  slug: naruto

@@ -15,6 +15,7 @@
 /tmp
 
 /public/uploads
+/public/assets
 
 *.DS_Store
 

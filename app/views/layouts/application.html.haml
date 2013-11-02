@@ -24,12 +24,13 @@
 
 					.panel.panel-default
 						.panel-heading Manga List
-						- Manga.order(:name).each do |manga|
-							%li.list-group-item
-								= link_to manga_path(manga) do 
-									= manga.name
-									- if manga.unread_chapters_number > 0
-										%span.badge.pull-right= manga.unread_chapters_number
+						%ul.list-group
+							- Manga.order(:name).each do |manga|
+								%li.list-group-item
+									= link_to manga_path(manga) do 
+										= manga.name
+										- if manga.unread_chapters_number > 0
+											%span.badge.pull-right= manga.unread_chapters_number
 
 				.col-md-9
 					= render 'layouts/messages'

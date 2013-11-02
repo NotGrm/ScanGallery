@@ -1,19 +1,41 @@
-.page-header
-	.btn-group.pull-right
-		= link_to edit_manga_path(@manga), :class => "btn btn-default" do
-			%span.glyphicon.glyphicon-pencil
-		= link_to @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default" do
-			%span.glyphicon.glyphicon-trash
-
-	%h1= @manga.name
-
 = ariane.render
 
-%section
-	.btn-group.pull-right
-		= link_to 'Add chapter', new_manga_chapter_path(@manga), :class => "btn btn-primary"
+.row
+	.col-md-12
+		%h1
+			= @manga.name
+			.pull-right
+				= link_to edit_manga_path(@manga), :class => "btn btn-default" do
+					%span.glyphicon.glyphicon-pencil
+					Edit
+				= link_to @manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default" do
+					%span.glyphicon.glyphicon-trash
+					Delete
+				= link_to new_manga_chapter_path(@manga), :class => "btn btn-lg btn-primary" do
+					Add chapter
+					%span.glyphicon.glyphicon-plus
 
-	%h2 Chapter List
+	.col-md-9
+		%dl
+			%dt Présentation
+			%dd= @manga.presentation
+
+	.col-md-3
+		%dl
+			%dt Author
+			%dd= @manga.author
+			
+			%dt Status
+			%dd= @manga.status
+			
+			%dt Genres
+			%dd
+				%span.label.label-default Shonen
+				%span.label.label-default Fantastique
+				%span.label.label-default Fantastique
+
+%section
+	%h3 Chapter List
 
 	= render :partial => "chapters/list", :locals => { :chapters => @chapters }
 

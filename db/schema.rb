@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615080103) do
+ActiveRecord::Schema.define(:version => 20131025060213) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "number"
@@ -25,9 +25,12 @@ ActiveRecord::Schema.define(:version => 20130615080103) do
 
   create_table "mangas", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "slug"
+    t.string   "author"
+    t.string   "status"
+    t.text     "presentation"
   end
 
   add_index "mangas", ["slug"], :name => "index_mangas_on_slug", :unique => true
@@ -37,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130615080103) do
     t.integer  "chapter_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.string   "image_name"
     t.string   "image"
     t.boolean  "is_read",    :default => false
   end

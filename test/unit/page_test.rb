@@ -19,4 +19,14 @@ class PageTest < ActiveSupport::TestCase
     assert_equal page.number, number, "Page number has changed."
   end
 
+  test 'should return next chapter first page' do
+    page = pages(:page_two)
+    assert_equal page.next_page, pages(:other_page_one)
+  end
+
+  test 'should return previous chapter last page' do
+    page = pages(:other_page_one)
+    assert_equal page.previous_page, pages(:page_two)
+  end
+
 end

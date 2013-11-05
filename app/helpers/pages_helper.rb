@@ -3,15 +3,19 @@ module PagesHelper
     if @page.next_page.nil?
       manga_path(@manga)
     else
-      manga_chapter_page_path(@manga, @chapter, @page.next_page.number)
+      page = @page.next_page
+      chapter = page.chapter
+      manga_chapter_page_path(@manga, chapter, page.number)
     end
   end
 
   def previous_page_path
     if @page.previous_page.nil?
       manga_path(@manga)
-    else 
-      manga_chapter_page_path(@manga, @chapter, @page.previous_page.number)
+    else
+      page = @page.previous_page
+      chapter = page.chapter
+      manga_chapter_page_path(@manga, chapter, page.number)
     end
   end
 end

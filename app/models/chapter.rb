@@ -1,6 +1,7 @@
 class Chapter < ActiveRecord::Base
   belongs_to :manga
-  has_many :pages, :dependent => :destroy, :autosave => true
+  has_many :pages, :dependent => :destroy, :autosave => true, order: 'number'
+
 
   attr_accessible :number, :team
 
@@ -22,10 +23,6 @@ class Chapter < ActiveRecord::Base
   	Chapter.order("created_at DESC").limit(10)
   end
 
-  def full_name
-  	"#{manga_name} #{number}"
-  end
-
   def manga_name
   	manga.name
   end
@@ -34,12 +31,14 @@ class Chapter < ActiveRecord::Base
     "#{number}"
   end
 
-  def ordered_pages(order = "ASC")
-    pages.order("number #{order}")
-  end
-
   def fullname
     "#{manga.name} - #{self.number}"
+  end
+
+  def first_page
+    unless pages.empty?
+      pages.first
+    end
   end
 
   private

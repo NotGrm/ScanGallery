@@ -14,7 +14,8 @@ class Page < ActiveRecord::Base
 
   def previous_page
     if chapter.pages.first == self
-      previous_chapter = Chapter.find_by_number(chapter.number - 1)
+      previous_chapter_number = chapter.number - 1
+      previous_chapter = Chapter.find_by_number_and_manga_id(previous_chapter_number, chapter.manga)
       previous_chapter.pages.last unless previous_chapter.nil?
     else
       Page.find_by_number_and_chapter_id(number - 1, chapter.id)
@@ -23,7 +24,8 @@ class Page < ActiveRecord::Base
 
   def next_page
     if chapter.pages.last == self
-      next_chapter = Chapter.find_by_number(chapter.number + 1)
+      next_chapter_number = chapter.number + 1
+      next_chapter = Chapter.find_by_number_and_manga_id(next_chapter_number, chapter.manga)
       next_chapter.pages.first unless next_chapter.nil?
     else
       Page.find_by_number_and_chapter_id(number + 1, chapter.id)

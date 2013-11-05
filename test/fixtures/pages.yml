@@ -16,3 +16,8 @@ page_two:
   id: 2
   number: 2
   chapter_id: 3
+
+other_page_one:
+  id: 3
+  number: 1
+  chapter_id: 4

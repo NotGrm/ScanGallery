@@ -11,6 +11,6 @@
 		%hr
 		%ul.list-group
 			- Chapter.last_ten_chapter.each do |chapter|
-				%li.list-group-item= link_to chapter.full_name, manga_chapter_path(chapter.manga, chapter)
+				%li.list-group-item= link_to chapter.fullname, manga_chapter_path(chapter.manga, chapter)
 
 

@@ -19,14 +19,14 @@
             %span.caret
           %ul.dropdown-menu{role: "menu"}
             - @manga.ordered_chapters.each do |chapter|
-              %li= link_to chapter.fullname, manga_chapter_page_path(@manga, chapter, 1)
+              %li= link_to chapter.fullname, manga_chapter_page_path(@manga, chapter, chapter.first_page) if chapter.first_page
       
         .btn-group
           %button.btn.btn-primary.dropdown-toggle{data:{toggle: "dropdown"}}
             %span= @page.number
             %span.caret
           %ul.dropdown-menu{role: "menu"}
-            - @chapter.ordered_pages.each do |page|
+            - @chapter.pages.each do |page|
               %li= link_to page.number, manga_chapter_page_path(@manga, @chapter, page.number)
 
       %ul.pager

@@ -14,8 +14,13 @@
         = f.input_field :status, collection: ["En cours", "Terminé"]
 
     .col-md-9
-      = f.label :presentation
-      = f.input_field :presentation, rows: 10
+      .form-group
+        = f.label :presentation
+        = f.input_field :presentation, rows: 5
+
+      / .form-group
+      /   = f.label :types
+      /   = f.input_field :types, data: {role: "tagsinput"}
 
   .well.well-sm.row
     .col-md-12

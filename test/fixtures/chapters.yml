@@ -17,3 +17,8 @@ naruto_one:
   id: 3
   number: 1
   manga: :naruto
+
+naruto_two:
+  id: 4
+  number: 2
+  manga: :naruto

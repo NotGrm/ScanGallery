@@ -7,8 +7,6 @@ class ChaptersController < ApplicationController
   def show
     @chapter = @manga.chapters.find_by_number(params[:id])
 
-    ariane.add "#{@chapter.number}", @chapter
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @chapter }
@@ -63,8 +61,6 @@ class ChaptersController < ApplicationController
   def new
     @chapter = @manga.chapters.build(:number => params[:number])
 
-    ariane.add 'New chapter', new_manga_chapter_path(@manga)
-
     respond_to do |format|
       flash[:warning] = "Chapter already have pages" if @chapter.pages.size > 0
       format.html # new.html.erb
@@ -75,11 +71,6 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/edit
   def edit
     @chapter = @manga.chapters.find_by_number(params[:id])
-    
-
-    ariane.add "#{@chapter.number}", manga_chapter_path(@manga, @chapter)
-    ariane.add 'Edit', edit_manga_chapter_path(@manga, @chapter)
-
   end
 
   # POST /chapters
@@ -138,10 +129,5 @@ class ChaptersController < ApplicationController
 
   def get_teams
     @teams = Chapter.uniq.pluck(:team)
-  end
-
-  def set_ariane
-    super
-    ariane.add @manga.name, manga_path(@manga)
   end
 end

@@ -1,38 +1,52 @@
-%table.table.table-hover.table-bordered
-  %thead
-    %tr
-      %th.col-md-2 #
-      %th Team
-      %th.col-md-3 Progression
-      %th.col-md-2 Action
-  %tbody
-    - chapters.each do |chapter|
-      %tr{:class => "#{chapter.pages.count > 0 ? "" : "danger" }"}
-        %td
-          = link_to chapter.number, [@manga, chapter]
-          
-          .pull-right
-            - if chapter.is_read?
-              = link_to unread_manga_chapter_path(@manga, chapter), :class => "muted" do
-                %span.glyphicon.glyphicon-eye-close
-            - else
-              = link_to read_manga_chapter_path(@manga, chapter), :class => "muted" do
-                %span.glyphicon.glyphicon-eye-open
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title 
+      Chapter List
 
-            = link_to edit_manga_chapter_path(@manga, chapter), :class => "muted" do
-              %span.glyphicon.glyphicon-pencil
-            = link_to [@manga, chapter], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
-              %span.glyphicon.glyphicon-remove
+      .pull-right
+        = paginate @chapters
+      .clearfix
 
-        %td= chapter.team
-        %td
-          .progress
-            - if chapter.pages.count > 0
-              .progress-bar.progress-bar-info{role: "progressbar", style: "width: #{chapter.read_percent}%", aria: {valuenow: "#{chapter.read_percent}", valuemin: "0", valuemax: "100"}} 
-                %span.sr-only= "#{chapter.read_percent}% Complete (info)" 
-        %td
-          = link_to [@manga, chapter] do
-            Go
-            %span.glyphicon.glyphicon-chevron-right
-    
+  %table.table.table-hover.table-bordered
+    %thead
+      %tr
+        %th.col-md-2 #
+        %th Team
+        %th.col-md-3 Progression
+        %th.col-md-2 Action
+    %tbody
+      - chapters.each do |chapter|
+        %tr{:class => "#{chapter.pages.count > 0 ? "" : "danger" }"}
+          %td
+            = link_to chapter.number, [@manga, chapter]
+            
+            .pull-right
+              - if chapter.is_read?
+                = link_to unread_manga_chapter_path(@manga, chapter), :class => "muted" do
+                  %span.glyphicon.glyphicon-eye-close
+              - else
+                = link_to read_manga_chapter_path(@manga, chapter), :class => "muted" do
+                  %span.glyphicon.glyphicon-eye-open
+
+              = link_to edit_manga_chapter_path(@manga, chapter), :class => "muted" do
+                %span.glyphicon.glyphicon-pencil
+              = link_to [@manga, chapter], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
+                %span.glyphicon.glyphicon-remove
+
+          %td= chapter.team
+          %td
+            .progress
+              - if chapter.pages.count > 0
+                .progress-bar.progress-bar-info{role: "progressbar", style: "width: #{chapter.read_percent}%", aria: {valuenow: "#{chapter.read_percent}", valuemin: "0", valuemax: "100"}} 
+                  %span.sr-only= "#{chapter.read_percent}% Complete (info)" 
+          %td
+            = link_to [@manga, chapter] do
+              Go
+              %span.glyphicon.glyphicon-chevron-right
+
+  .panel-footer
+    .pull-right
+      = paginate @chapters
+    .clearfix
+
   

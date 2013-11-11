@@ -1,43 +1,55 @@
-.page-header
-  .btn-group.pull-right
-    = link_to mangas_path(display: "grid"), class: "btn btn-default" do
-      %span.glyphicon.glyphicon-th
-    = link_to mangas_path(display: "list"), class: "btn btn-default" do
-      %span.glyphicon.glyphicon-th-list
-  %h1 
-    Listing mangas
-    %small
-      = link_to 'Add new', new_manga_path, :class => "btn btn-primary btn-sm"
-
 .row
+  .col-md-12
+    %h1 
+      Listing mangas
+      .pull-right
+        .btn-group
+          = link_to mangas_path(display: "grid"), class: "btn btn-default" do
+            %span.glyphicon.glyphicon-th
+          = link_to mangas_path(display: "list"), class: "btn btn-default" do
+            %span.glyphicon.glyphicon-th-list
+        = link_to new_manga_path, :class => "btn btn-primary btn-lg" do
+          Add new
+          %span.glyphicon.glyphicon-plus
+      .clearfix
+
   - if params[:display] == "list"
-    .span8
-      %table.table.table-hover.table-bordered
-        %thead
-          %tr
-            %th Name
-            %th
-            %th.col-md-2 Action
-        %tbody
-          - @mangas.each do |manga|
-            %tr
-              %td= link_to manga.name, manga
-              %td
-                .btn-group
-                  = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default btn-sm"
-                  = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-sm"
-              %td
+    .panel.panel-default.widget
+      .panel-heading
+        %span.glyphicon.glyphicon-book
+      %ul.list-group
+        - @mangas.each do |manga|
+          %li.list-group-item
+            .row
+              .col-xs-3.col-md-2
+                = image_tag "http://placehold.it/80", class: "img-rounded img-responsive"
+              .col-xs-6.col-md-9
+                = link_to manga.name, manga
+                .mic-info= "By : #{manga.author}"
+                .action
+                  = link_to edit_manga_path(manga), :class => "btn btn-primary btn-xs" do
+                    %span.glyphicon.glyphicon-pencil
+
+                  = link_to manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-xs" do
+                    %span.glyphicon.glyphicon-trash
+
+              .col-xs-3.col-md-1
                 = link_to manga do
                   Go
                   %span.glyphicon.glyphicon-chevron-right
+
   - else
     - @mangas.each do |manga|
-      .col-md-3
+      .col-md-3.col-sm-4
         .thumbnail
           = image_tag "http://placehold.it/200x150"
           .caption
-            %h3= link_to manga.name, manga
-            %p
-              = link_to 'Edit', edit_manga_path(manga), :class => "btn btn-default"
-              = link_to 'Destroy', manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
+            %h4
+              = link_to manga.name, manga
+            %div
+              = link_to edit_manga_path(manga), :class => "btn btn-primary btn-xs" do
+                %span.glyphicon.glyphicon-pencil
+
+              = link_to manga, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-xs" do
+                %span.glyphicon.glyphicon-trash
     

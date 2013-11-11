@@ -29,7 +29,6 @@ group :production do
   gem 'pg'
 end
 
-gem 'ariane'
 gem 'rmagick', '2.13.2'
 gem 'carrierwave'
 gem 'gon'

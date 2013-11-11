@@ -1,12 +1,12 @@
 .row
-	.col-md-6
+	.col-md-6.col-sm-6
 		%h2 Latest Manga
 		%hr
 		%ul.list-group
 			- Manga.last_ten_manga.each do |manga|
 				%li.list-group-item= link_to manga.name, manga_path(manga)
 		
-	.col-md-6
+	.col-md-6.col-sm-6
 		%h2 Latest Chapter
 		%hr
 		%ul.list-group

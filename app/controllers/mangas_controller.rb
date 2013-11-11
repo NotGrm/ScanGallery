@@ -15,9 +15,7 @@ class MangasController < ApplicationController
   def show
     @manga = Manga.find(params[:id])
     @chapters = @manga.ordered_chapters.page(params[:page]).per 15
-    
-    ariane.add @manga.name, @manga
-
+  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @manga }
@@ -29,8 +27,6 @@ class MangasController < ApplicationController
   def new
     @manga = Manga.new
 
-    ariane.add 'New Manga', new_manga_path
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @manga }
@@ -40,9 +36,6 @@ class MangasController < ApplicationController
   # GET /mangas/1/edit
   def edit
     @manga = Manga.find(params[:id])
-
-    ariane.add @manga.name, manga_path(@manga)
-    ariane.add 'Edit', edit_manga_path(@manga)
   end
 
   # POST /mangas
@@ -96,5 +89,4 @@ class MangasController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 end

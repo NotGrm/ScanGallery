@@ -8,6 +8,12 @@
         %span.icon-bar
       = link_to "Scan Gallery", root_path, :class => "navbar-brand"
     
-    %nav.navbar-collapse.collapse
+    .collapse.navbar-collapse
+
       %ul.nav.navbar-nav
         %li= link_to "Mangas", mangas_path
+
+    
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to 'Add Manga', new_manga_path
+

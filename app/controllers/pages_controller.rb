@@ -21,8 +21,6 @@ class PagesController < ApplicationController
   def new
     @page = @chapter.pages.build
 
-    ariane.add "Add Pages", '#'
-
     gon.manga_id = @manga.slug
     gon.chapter_id = @chapter.number
 
@@ -60,12 +58,6 @@ class PagesController < ApplicationController
   def get_manga_and_chapter
     @manga = Manga.find(params[:manga_id])
     @chapter = @manga.chapters.find_by_number(params[:chapter_id])
-  end
-
-  def set_ariane
-    super    
-    ariane.add @manga.name, manga_path(@manga)
-    ariane.add "#{@chapter.number}", manga_chapter_path(@manga,@chapter)
   end
 
   def mark_page_as_read

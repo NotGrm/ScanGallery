@@ -1,5 +1,3 @@
-= ariane.render
-
 .row
 	.col-md-12
 		%h1
@@ -14,13 +12,14 @@
 				= link_to new_manga_chapter_path(@manga), :class => "btn btn-lg btn-primary" do
 					Add chapter
 					%span.glyphicon.glyphicon-plus
+			.clearfix
 
-	.col-md-9
+	.col-md-9.col-sm-9
 		%dl
 			%dt Présentation
 			%dd= @manga.presentation
 
-	.col-md-3
+	.col-md-3.col-sm-3
 		%dl
 			%dt Author
 			%dd= @manga.author
@@ -35,8 +34,5 @@
 				%span.label.label-default Fantastique
 
 %section
-	%h3 Chapter List
 
 	= render :partial => "chapters/list", :locals => { :chapters => @chapters }
-
-	= paginate @chapters

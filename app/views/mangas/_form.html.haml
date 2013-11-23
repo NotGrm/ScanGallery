@@ -22,11 +22,12 @@
       /   = f.label :types
       /   = f.input_field :types, data: {role: "tagsinput"}
 
-  .well.well-sm.row
-    .col-md-12
-      .form-group
-        = label_tag :chapters_number, "Number of chapters", class: "control-label"
-        = text_field_tag :chapters_number,  params[:chapters_number], class: "form-control"
+  - if current_page? new_manga_path()
+    .well.well-sm.row
+      .col-md-12
+        .form-group
+          = label_tag :chapters_number, "Number of chapters", class: "control-label"
+          = text_field_tag :chapters_number,  params[:chapters_number], class: "form-control"
 
   .row
     .col-md-12

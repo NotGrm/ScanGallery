@@ -24,12 +24,10 @@
         by
         = @chapter.team
 
-= ariane.render
-
 %section#pages
   .row
     - @chapter.pages.each do |page|
-      .col-md-2
+      .col-md-2.col-sm-3
         = link_to manga_chapter_page_path(@manga, @chapter, page), :class => "thumbnail text-info" do
           = image_tag(page.image.thumb.url)
         .actions

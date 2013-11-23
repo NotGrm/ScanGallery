@@ -10,16 +10,17 @@
   %table.table.table-hover.table-bordered
     %thead
       %tr
-        %th.col-md-2 #
-        %th Team
+        %th.col-md-1 #
+        %th.col-md-6 Title
+        %th.col-md-1 Team
         %th.col-md-3 Progression
-        %th.col-md-2 Action
+        %th.col-md-1 Action
     %tbody
       - chapters.each do |chapter|
         %tr{:class => "#{chapter.pages.count > 0 ? "" : "danger" }"}
           %td
             = link_to chapter.number, [@manga, chapter]
-            
+          %td
             .pull-right
               - if chapter.is_read?
                 = link_to unread_manga_chapter_path(@manga, chapter), :class => "muted" do
@@ -27,12 +28,6 @@
               - else
                 = link_to read_manga_chapter_path(@manga, chapter), :class => "muted" do
                   %span.glyphicon.glyphicon-eye-open
-
-              = link_to edit_manga_chapter_path(@manga, chapter), :class => "muted" do
-                %span.glyphicon.glyphicon-pencil
-              = link_to [@manga, chapter], :confirm => 'Are you sure?', :method => :delete, :class => "muted" do
-                %span.glyphicon.glyphicon-remove
-
           %td= chapter.team
           %td
             .progress

@@ -1,14 +1,16 @@
-= simple_form_for [@manga,@chapter], defaults: { input_html: { class: 'form-control' } }, input_html: {class: "form-horizontal"} do |f|
-	.form-group
-		= f.label :number, class: "col-md-2"
-		.col-md-10
-			= f.input_field :number, :autofocus => "autofocus", :autocomplete => "off"
+= simple_form_for [@manga,@chapter], defaults: { input_html: { class: 'form-control' }} do |f|
+	.well.well-sm.row
+		.col-md-6.col-sm-6
+			.form-group
+				= f.label :number
+				= f.input_field :number, :autofocus => "autofocus", :autocomplete => "off"
 
-	.form-group
-		= f.label :team, class: "col-md-2"
-		.col-md-10
-			= f.input_field :team, :class => "typeahead form-control", autocomplete: "off"
+		.col-md-6.col-sm-6
+			.form-group
+				= f.label :team
+				= f.input_field :team, :class => "typeahead form-control", autocomplete: "off"
 
-	.form-group
-		.col-lg-offset-2.col-lg-10
-			= f.button :submit, :class => "btn-primary"
+	.row
+		.col-md-12
+			.form-group
+				= f.button :submit, :class => "btn-primary"

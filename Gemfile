@@ -29,14 +29,15 @@ group :production do
   gem 'pg'
 end
 
+gem 'ariane', '0.0.3'
 gem 'rmagick', '2.13.2'
-gem 'carrierwave'
-gem 'gon'
+gem 'carrierwave', '0.9.0'
+gem 'gon', '5.0.4'
 gem 'haml-rails'
-gem 'jquery-rails'
-gem "friendly_id"
-gem 'simple_form'
-gem 'kaminari'
+gem 'jquery-rails', '3.1.0'
+gem 'friendly_id'
+gem 'simple_form', '2.1.1'
+gem 'kaminari', '0.15.1'
 gem 'newrelic_rpm'
 
 # To use ActiveModel has_secure_password
